@@ -20,14 +20,18 @@
 #define	X_ShmAttach	1
 
 int	mlx_X_error;
+ssize_t result;
 
 int	shm_att_pb(Display *d,XErrorEvent *ev)
 {
   if (ev->request_code==146 && ev->minor_code==X_ShmAttach)
-    write(2,WARN_SHM_ATTACH,strlen(WARN_SHM_ATTACH));
+  {
+    result = write(2,WARN_SHM_ATTACH,strlen(WARN_SHM_ATTACH));
+	if (result == -1)
+		perror("write error");
+  }
   mlx_X_error = 1;
 }
-
 
 /*
 **  Data malloc :  width+32 ( bitmap_pad=32 ),    *4 = *32 / 8bit
@@ -108,9 +112,13 @@ void	*mlx_int_new_image(t_xvar *xvar,int width, int height,int format)
 {
   t_img	*img;
 
-  if (!(img = malloc(sizeof(*img))) ||
-      !(img->data = malloc((width+32)*height*4)))
+  if (!(img = malloc(sizeof(*img))))
     return ((void *)0);
+  if (!(img->data = malloc((width+32)*height*4)))
+  {
+    free(img);
+    return ((void *)0);
+  }
   bzero(img->data,(width+32)*height*4);
   img->image = XCreateImage(xvar->display,xvar->visual,xvar->depth,format,0,
 			    img->data,width,height,32,0);
