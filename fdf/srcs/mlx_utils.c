@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_strs_until.c                               :+:      :+:    :+:   */
+/*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 09:56:16 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/27 14:04:53 by juduchar         ###   ########.fr       */
+/*   Created: 2025/01/27 14:58:17 by juduchar          #+#    #+#             */
+/*   Updated: 2025/01/27 15:21:05 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "fdf.h"
 
-// free an array of strings until n (not included)
-char	**ft_free_strs_until(char **strs, size_t n)
+int	rgb_to_color(int r, int g, int b)
 {
-	size_t	i;
+	return ((r << 16) | (g << 8) | b);
+}
 
-	i = 0;
-	while (i < n)
-	{
-		free(strs[i]);
-		i++;
-	}
-	free(strs);
-	return (NULL);
+void	my_mlx_pixel_put(t_data *data)
+{
+	char			*dst;
+
+	dst = data->image.data_addr
+		+ (data->pixel.y * data->image.line_length
+			+ data->pixel.x * (data->image.bits_per_pixel / 8));
+	*(unsigned int *)dst = data->pixel.color;
 }

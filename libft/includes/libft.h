@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:21:27 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/22 11:12:29 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:05:13 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ char	*ft_strnjoin(char *dst, const char *src,
 			size_t dst_len, size_t src_len);
 void	ft_free_strs(char **strs);
 char	**ft_free_strs_until(char **strs, size_t n);
+int		**ft_free_array2D_until(int **array2D, size_t n);
+void	ft_free_array2D(int **array2D);
 
 #endif
