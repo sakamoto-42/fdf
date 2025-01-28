@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:36:48 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/28 17:49:04 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:51:42 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ void	ft_draw_lines_between_pixels(t_data *data)
 		while (col_count < data->map.cols)
 		{
 			if (col_count < data->map.cols - 1)
-				ft_draw_line(data, data->pixels[row_count][col_count], data->pixels[row_count][col_count + 1]);
+				ft_draw_line(data, data->pixels[row_count][col_count],
+					data->pixels[row_count][col_count + 1]);
 			if (row_count < data->map.rows - 1)
-				ft_draw_line(data, data->pixels[row_count][col_count], data->pixels[row_count + 1][col_count]);
+				ft_draw_line(data, data->pixels[row_count][col_count],
+					data->pixels[row_count + 1][col_count]);
 			col_count++;
 		}
 		row_count++;
