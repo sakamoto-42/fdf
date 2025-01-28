@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:15:28 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/27 15:19:33 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:09:11 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static	int	ft_set_map_cols_and_rows_number(t_data *data)
 	data->map.cols = 0;
 	while (cols[data->map.cols])
 		data->map.cols++;
-	free(cols);
+	ft_free_strs(cols);
 	data->map.rows = 0;
 	while (current_row)
 	{

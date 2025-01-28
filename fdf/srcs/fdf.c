@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:45:29 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/28 13:40:10 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:02:31 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,6 @@ int	main(int argc, char **argv)
 	ft_print_map(data);
 	mlx_key_hook(data.window.win_ptr, ft_deal_key, (void *)&data);
 	mlx_loop(data.mlx_ptr);
+	ft_free_points(&data);
+	ft_free_pixels(&data);
 }

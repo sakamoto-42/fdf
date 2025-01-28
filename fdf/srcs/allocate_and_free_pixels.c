@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:30:01 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/28 13:47:32 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:03:34 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,19 @@ t_pixel	**ft_free_pixels_until(t_pixel **pixels, size_t n)
 		i++;
 	}
 	free(pixels);
+	return (NULL);
+}
+
+t_pixel	**ft_free_pixels(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->map.rows)
+	{
+		free(data->pixels[i]);
+		i++;
+	}
+	free(data->pixels);
 	return (NULL);
 }

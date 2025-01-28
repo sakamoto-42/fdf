@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/28 13:44:32 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:03:02 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,10 @@ void		ft_init_window(t_data *data);
 void		ft_init_image(t_data *data);
 int			ft_allocate_points(t_data *data);
 t_point		**ft_free_points_until(t_point **points, size_t n);
+t_pixel		**ft_free_points(t_data *data);
 int			ft_allocate_pixels(t_data *data);
 t_pixel		**ft_free_pixels_until(t_pixel **pixels, size_t n);
+t_pixel		**ft_free_pixels(t_data *data);
 int			ft_set_points(t_data *data);
 void		ft_points_to_pixels(t_data *data);
 void		ft_print_raw_map(t_data data);
