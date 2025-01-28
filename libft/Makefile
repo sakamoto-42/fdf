@@ -60,6 +60,7 @@ SRCS_FILES = \
 	ft_free_array2D_until.c \
 	ft_strndup.c \
 	ft_strnjoin.c \
+	ft_abs.c \
 	get_next_line.c \
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS_FILES:.c=.o))

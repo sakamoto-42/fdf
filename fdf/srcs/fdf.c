@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:45:29 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/28 14:02:31 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:36:37 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		return (perror(ft_strerror(status_code)), 1);
 	ft_print_raw_map(data);
 	ft_init(&data);
-	ft_print_map(data);
+	ft_draw_lines_between_pixels(&data);
 	mlx_key_hook(data.window.win_ptr, ft_deal_key, (void *)&data);
 	mlx_loop(data.mlx_ptr);
 	ft_free_points(&data);

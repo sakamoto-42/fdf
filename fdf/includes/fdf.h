@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/28 14:03:02 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:48:39 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 # include "ft_printf.h"
 # include <fcntl.h>
 # include <mlx.h>
-
-// FOR DEBUG ONLY
-# include <stdio.h>
-# include <unistd.h>
 
 # define SUCCESS 0
 # define INVALID_NUMBER_OF_ARGUMENTS 1
@@ -51,6 +47,16 @@ typedef struct s_pixel
 	int				y;
 	unsigned int	color;
 }		t_pixel;
+
+typedef struct s_bresenham
+{
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+	int	e2;
+}		t_bresenham;
 
 typedef struct s_point
 {
@@ -97,9 +103,12 @@ t_pixel		**ft_free_pixels_until(t_pixel **pixels, size_t n);
 t_pixel		**ft_free_pixels(t_data *data);
 int			ft_set_points(t_data *data);
 void		ft_points_to_pixels(t_data *data);
+void		ft_init_pixels_color(t_data *data);
 void		ft_print_raw_map(t_data data);
 void		ft_print_map(t_data data);
 int			ft_rgb_to_color(int r, int g, int b);
-void		ft_mlx_pixel_put(t_data *data, int row_count, int col_count);
+void		ft_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		ft_draw_lines_between_pixels(t_data *data);
+void		ft_draw_line(t_data *data, t_pixel pix1, t_pixel pix2);
 
 #endif
