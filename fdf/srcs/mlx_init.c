@@ -6,13 +6,13 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:57:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/27 15:21:01 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:48:17 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	init_window(t_data *data)
+void	ft_init_window(t_data *data)
 {
 	data->window.size_x = 800;
 	data->window.size_y = 600;
@@ -21,7 +21,7 @@ void	init_window(t_data *data)
 			data->window.size_y, data->window.title);
 }
 
-void	init_image(t_data *data)
+void	ft_init_image(t_data *data)
 {
 	data->image.img_ptr = mlx_new_image(data->mlx_ptr,
 			data->window.size_x, data->window.size_y);

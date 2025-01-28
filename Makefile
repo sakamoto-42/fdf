@@ -29,12 +29,17 @@ FDF_INCLUDES = -I$(FDF_HEADER_DIR) -I$(LIBFT_HEADER_DIR) -I$(FT_PRINTF_HEADER_DI
 FDF_LIBRARIES = -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -L$(MLX_DIR) $(MLX_FLAGS) $(MATH_FLAG)
 
 FDF_SRCS_FILES = \
+		allocate_and_free_pixels.c \
 		allocate_and_free_points.c \
 		debug.c \
+		error_msg.c \
 		fdf.c \
 		init_map.c \
+		init.c \
 		mlx_init.c \
 		mlx_utils.c \
+		print_map.c \
+		set_pixels.c \
 		set_points.c \
 
 FDF_OBJS = $(addprefix $(FDF_OBJS_DIR)/, $(FDF_SRCS_FILES:.c=.o))
