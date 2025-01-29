@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/29 13:33:24 by julien           ###   ########.fr       */
+/*   Updated: 2025/01/29 22:52:00 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define ERROR_OPEN_FILE 2
 # define ERROR_EMPTY_FILE 3
 # define ERROR_NOT_ENOUGH_MEMORY 4
+
+# define ORTHOGONAL_PROJECTION 5
+# define ISOMETRIC_PROJECTION 6
 
 typedef struct s_window
 {
@@ -67,14 +70,21 @@ typedef struct s_point
 	int			z;
 }		t_point;
 
+typedef struct s_isometric
+{
+	double	angle;
+	int	scale_z;
+	int	offset_z;
+	
+}		t_render_isometric;
+
 typedef struct s_render
 {
 	int		projection;
 	int		scale;
 	int		offset_x;
 	int		offset_y;
-	int		scale_z;
-	double	angle;
+	t_render_isometric	render_isometric;
 }		t_render;
 
 typedef struct s_map
@@ -95,7 +105,7 @@ typedef struct s_data
 	t_render		render;
 }		t_data;
 
-const char	*ft_strerror(int errnum);
+char		*ft_strerror(int errnum);
 void		ft_init(t_data *data);
 int			ft_init_map(t_data *data);
 void		ft_init_window(t_data *data);
@@ -108,7 +118,7 @@ t_pixel		**ft_free_pixels_until(t_pixel **pixels, size_t n);
 t_pixel		**ft_free_pixels(t_data *data);
 int			ft_set_points(t_data *data);
 void		ft_points_to_pixels(t_data *data);
-void	ft_apply_isometric_projection(t_render *render,
+void		ft_apply_isometric_projection(t_render *render,
 				t_point point, t_pixel *pixel);
 void		ft_init_pixels_color(t_data *data);
 void		ft_print_raw_map(t_data data);
@@ -117,4 +127,7 @@ int			ft_rgb_to_color(int r, int g, int b);
 void		ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		ft_draw_lines_between_pixels(t_data *data);
 void		ft_draw_line(t_data *data, t_pixel pix1, t_pixel pix2);
+void		ft_init_default_settings(t_data *data);
+void		ft_set_pixels_color(t_data *data, int color);
+void		ft_set_offset(t_data *data);
 #endif

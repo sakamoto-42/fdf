@@ -6,14 +6,16 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:36:11 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/28 13:48:16 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/29 22:35:56 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-const char	*ft_strerror(int errnum)
+char	*ft_strerror(int errnum)
 {
+	if (errnum == INVALID_NUMBER_OF_ARGUMENTS)
+		return ("Error : invalid number of arguments\n");
 	if (errnum == ERROR_OPEN_FILE)
 		return ("Error : could not open map file");
 	if (errnum == ERROR_EMPTY_FILE)

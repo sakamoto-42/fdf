@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:45:29 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/28 17:36:37 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/29 22:50:21 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	int		status_code;
 
 	if (argc - 1 != 1)
-		return (perror(ft_strerror(INVALID_NUMBER_OF_ARGUMENTS)), 1);
+		return (ft_putstr_fd(ft_strerror(INVALID_NUMBER_OF_ARGUMENTS), 2), 1);
 	data.map.map_file = argv[1];
 	status_code = ft_init_map(&data);
 	if (status_code != SUCCESS)
