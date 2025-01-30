@@ -3,25 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:45:29 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/29 22:50:21 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:41:34 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	ft_deal_key(int keycode, void *param)
+int	ft_deal_key(int keycode, t_data *data)
 {
-	t_data	*data;
-
-	data = (t_data *)param;
 	if (keycode == 65307)
 	{
-		mlx_destroy_window(data->mlx_ptr, data->window.win_ptr);
-		exit(0);
+		ft_printf("ECHAP");
+		ft_handle_close(data);
 	}
+	if (keycode == 61)
+	{
+		ft_printf("+");
+		data->render.scale += 1;
+		ft_init_pixels(data);
+		mlx_destroy_image(data->mlx_ptr, data->image.img_ptr);
+		ft_init_image(data);
+		mlx_clear_window(data->mlx_ptr, data->window.win_ptr);
+		ft_draw_lines_between_pixels(data);
+	}
+	if (keycode == 45)
+	{
+		ft_printf("-");
+		data->render.scale -= 1;
+		ft_init_pixels(data);
+		mlx_destroy_image(data->mlx_ptr, data->image.img_ptr);
+		ft_init_image(data);
+		mlx_clear_window(data->mlx_ptr, data->window.win_ptr);
+		ft_draw_lines_between_pixels(data);
+	}
+	if (keycode == 65362)
+	{
+		ft_printf("UP");
+	}
+	if (keycode == 65364)
+	{
+		ft_printf("DOWN");
+	}
+	if (keycode == 65361)
+	{
+		ft_printf("LEFT");
+	}
+	if (keycode == 65363)
+	{
+		ft_printf("RIGHT");
+	}
+	return (0);
+}
+
+void	ft_free_all(t_data *data)
+{
+	if (data->image.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->image.img_ptr);
+	if (data->window.win_ptr)
+		mlx_destroy_window(data->mlx_ptr, data->window.win_ptr);
+	if (data->mlx_ptr)
+	{
+		mlx_destroy_display(data->mlx_ptr);
+		free(data->mlx_ptr);
+	}
+	if (data->map.points)
+		ft_free_points(data);
+	if (data->pixels)
+		ft_free_pixels(data);
+}
+
+int	ft_handle_close(t_data *data)
+{
+	ft_free_all(data);
+	exit(0);
 	return (0);
 }
 
@@ -41,9 +98,8 @@ int	main(int argc, char **argv)
 		return (perror(ft_strerror(status_code)), 1);
 	ft_print_raw_map(data);
 	ft_init(&data);
-	ft_draw_lines_between_pixels(&data);
-	mlx_key_hook(data.window.win_ptr, ft_deal_key, (void *)&data);
+	mlx_key_hook(data.window.win_ptr, ft_deal_key, &data);
+	mlx_hook(data.window.win_ptr, DestroyNotify,
+		StructureNotifyMask, ft_handle_close, &data);
 	mlx_loop(data.mlx_ptr);
-	ft_free_points(&data);
-	ft_free_pixels(&data);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/29 22:52:00 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:17:26 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 # include "ft_printf.h"
 # include <fcntl.h>
 # include <mlx.h>
+# include <X11/X.h>
 # include <stdio.h>
 # include <math.h>
+
+# define WINDOWS_RESIZE_STEP 100
 
 # define SUCCESS 0
 # define INVALID_NUMBER_OF_ARGUMENTS 1
@@ -73,17 +76,17 @@ typedef struct s_point
 typedef struct s_isometric
 {
 	double	angle;
-	int	scale_z;
-	int	offset_z;
-	
+	int		scale_z;
+	int		offset_z;
+
 }		t_render_isometric;
 
 typedef struct s_render
 {
-	int		projection;
-	int		scale;
-	int		offset_x;
-	int		offset_y;
+	int					projection;
+	int					scale;
+	int					offset_x;
+	int					offset_y;
 	t_render_isometric	render_isometric;
 }		t_render;
 
@@ -130,4 +133,7 @@ void		ft_draw_line(t_data *data, t_pixel pix1, t_pixel pix2);
 void		ft_init_default_settings(t_data *data);
 void		ft_set_pixels_color(t_data *data, int color);
 void		ft_set_offset(t_data *data);
+void		ft_init_pixels(t_data *data);
+int			ft_handle_close(t_data *data);
+int			ft_handle_resize(t_data *data, int new_size_x, int new_size_y);
 #endif
