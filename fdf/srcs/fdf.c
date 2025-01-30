@@ -6,38 +6,82 @@
 /*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:45:29 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/30 11:41:34 by julien           ###   ########.fr       */
+/*   Updated: 2025/01/30 12:15:06 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+void	ft_update_image(t_data *data)
+{
+	mlx_destroy_image(data->mlx_ptr, data->image.img_ptr);
+	ft_init_image(data);
+	mlx_clear_window(data->mlx_ptr, data->window.win_ptr);
+	ft_init_pixels(data);
+	ft_draw_lines_between_pixels(data);
+}
+
 int	ft_deal_key(int keycode, t_data *data)
 {
+	ft_printf("%d", keycode);
 	if (keycode == 65307)
 	{
 		ft_printf("ECHAP");
 		ft_handle_close(data);
 	}
+	if (keycode == 111 && data->render.projection != ORTHOGONAL_PROJECTION)
+	{
+		ft_printf("o");
+		data->render.projection = ORTHOGONAL_PROJECTION;
+		ft_update_image(data);
+	}
+	if (keycode == 105 && data->render.projection != ISOMETRIC_PROJECTION)
+	{
+		ft_printf("i");
+		data->render.projection = ISOMETRIC_PROJECTION;
+		ft_update_image(data);
+	}
+	if (keycode == 109)
+	{
+		ft_printf("m");
+		data->render.scale = -data->render.scale;
+		ft_update_image(data);
+	}
+	if (keycode == 91 && data->render.projection == ISOMETRIC_PROJECTION)
+	{
+		ft_printf("[");
+		data->render.render_isometric.angle -= 0.1;
+		ft_update_image(data);
+	}
+	if (keycode == 93 && data->render.projection == ISOMETRIC_PROJECTION)
+	{
+		ft_printf("]");
+		data->render.render_isometric.angle += 0.1;
+		ft_update_image(data);
+	}
+	if (keycode == 57 && data->render.projection == ISOMETRIC_PROJECTION)
+	{
+		ft_printf("(");
+		data->render.render_isometric.scale_z -= 0.1;
+		ft_update_image(data);
+	}
+	if (keycode == 48 && data->render.projection == ISOMETRIC_PROJECTION)
+	{
+		ft_printf(")");
+		data->render.render_isometric.scale_z += 1;
+		ft_update_image(data);
+	}
 	if (keycode == 61)
 	{
 		ft_printf("+");
 		data->render.scale += 1;
-		ft_init_pixels(data);
-		mlx_destroy_image(data->mlx_ptr, data->image.img_ptr);
-		ft_init_image(data);
-		mlx_clear_window(data->mlx_ptr, data->window.win_ptr);
-		ft_draw_lines_between_pixels(data);
+		ft_update_image(data);
 	}
 	if (keycode == 45)
 	{
 		ft_printf("-");
 		data->render.scale -= 1;
-		ft_init_pixels(data);
-		mlx_destroy_image(data->mlx_ptr, data->image.img_ptr);
-		ft_init_image(data);
-		mlx_clear_window(data->mlx_ptr, data->window.win_ptr);
-		ft_draw_lines_between_pixels(data);
+		ft_update_image(data);
 	}
 	if (keycode == 65362)
 	{
