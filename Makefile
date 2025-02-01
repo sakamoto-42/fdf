@@ -32,7 +32,7 @@ FDF_SRCS_FILES = \
 		allocate_and_free_pixels.c \
 		allocate_and_free_points.c \
 		debug.c \
-		draw_lines.c \
+		draw_map.c \
 		error_msg.c \
 		fdf.c \
 		init_map.c \
@@ -41,6 +41,11 @@ FDF_SRCS_FILES = \
 		mlx_utils.c \
 		set_pixels.c \
 		set_points.c \
+		apply_params_to_pixels.c \
+		update_image.c \
+		handle_keys.c \
+		destroy_and_free.c \
+		render_map.c \
 
 FDF_OBJS = $(addprefix $(FDF_OBJS_DIR)/, $(FDF_SRCS_FILES:.c=.o))
 

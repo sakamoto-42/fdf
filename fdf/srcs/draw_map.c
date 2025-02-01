@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_lines.c                                       :+:      :+:    :+:   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:36:48 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/28 17:51:42 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:14:33 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_draw_line(t_data *data, t_pixel pix1, t_pixel pix2)
 	ft_mlx_pixel_put(data, pix1.x, pix1.y, pix1.color);
 }
 
-void	ft_draw_lines_between_pixels(t_data *data)
+void	ft_draw_map(t_data *data)
 {
 	int	row_count;
 	int	col_count;
