@@ -6,7 +6,7 @@
 /*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:37:52 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/01 07:59:27 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/01 08:20:30 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_init_pixels(t_data *data)
 	ft_set_pixels_color(data, ft_rgb_to_color(0, 255, 0));
 }
 
-void	ft_set_offset(t_data *data)
+void	ft_center_map(t_data *data)
 {
 	if (data->render.projection == ORTHOGONAL_PROJECTION)
 	{
@@ -64,7 +64,6 @@ void	ft_points_to_pixels(t_data *data)
 					&data->pixels[row_count][col_count],
 					data->render);
 			}
-			ft_set_offset(data);
 			ft_apply_offset_to_pixel(&data->pixels[row_count][col_count],
 				data->render);
 			col_count++;

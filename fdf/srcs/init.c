@@ -6,7 +6,7 @@
 /*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/30 15:34:38 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/01 08:20:44 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void	ft_init(t_data *data)
 	ft_init_default_settings(data);
 	data->mlx_ptr = mlx_init();
 	ft_init_window(data);
+	ft_center_map(data);
 	ft_render_map(data);
 }

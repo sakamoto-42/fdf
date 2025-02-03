@@ -6,7 +6,7 @@
 /*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:18:25 by julien            #+#    #+#             */
-/*   Updated: 2025/01/30 15:42:05 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/01 08:32:30 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,33 @@
 
 void	ft_handle_translation(t_data *data, int keycode)
 {
-	(void)data;
 	if (keycode == 65362)
 	{
 		ft_printf("UP");
+		ft_update_offset_y(data, data->render.offset_y - 20);
 	}
 	if (keycode == 65364)
 	{
 		ft_printf("DOWN");
+		ft_update_offset_y(data, data->render.offset_y + 20);
 	}
 	if (keycode == 65361)
 	{
 		ft_printf("LEFT");
+		ft_update_offset_x(data, data->render.offset_x - 20);
 	}
 	if (keycode == 65363)
 	{
 		ft_printf("RIGHT");
+		ft_update_offset_x(data, data->render.offset_x + 20);
 	}
+	if (keycode == 114)
+	{
+		ft_printf("r");
+		ft_center_map(data);
+		ft_update_image(data);
+	}
+
 }
 
 int	ft_handle_keys(int keycode, t_data *data)
@@ -43,11 +53,11 @@ int	ft_handle_keys(int keycode, t_data *data)
 	if (keycode == 105 && data->render.projection != ISOMETRIC_PROJECTION)
 		ft_update_projection(data, ISOMETRIC_PROJECTION);
 	if (keycode == 109)
-		ft_update_scale(data, -data->render.scale);
+		ft_update_scale(data, -data->render.scale, MIRROR);
 	if (keycode == 61)
-		ft_update_scale(data, data->render.scale + 1);
+		ft_update_scale(data, data->render.scale + 1, 0);
 	if (keycode == 45)
-		ft_update_scale(data, data->render.scale - 1);
+		ft_update_scale(data, data->render.scale - 1, 0);
 	if (keycode == 91 && data->render.projection == ISOMETRIC_PROJECTION)
 		ft_update_angle(data, data->render.render_isometric.angle - 0.1);
 	if (keycode == 93 && data->render.projection == ISOMETRIC_PROJECTION)

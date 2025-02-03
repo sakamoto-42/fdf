@@ -6,7 +6,7 @@
 /*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/01/30 15:38:11 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/01 08:28:51 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 
 # define ORTHOGONAL_PROJECTION 5
 # define ISOMETRIC_PROJECTION 6
+# define MIRROR	7
+
 
 typedef struct s_window
 {
@@ -132,7 +134,7 @@ void		ft_draw_map(t_data *data);
 void		ft_draw_line(t_data *data, t_pixel pix1, t_pixel pix2);
 void		ft_init_default_settings(t_data *data);
 void		ft_set_pixels_color(t_data *data, int color);
-void		ft_set_offset(t_data *data);
+void		ft_center_map(t_data *data);
 void		ft_init_pixels(t_data *data);
 int			ft_handle_close(t_data *data);
 int			ft_handle_resize(t_data *data, int new_size_x, int new_size_y);
@@ -148,8 +150,11 @@ void		ft_render_map(t_data *data);
 int			ft_handle_close(t_data *data);
 
 void		ft_update_projection(t_data *data, int projection);
-void		ft_update_scale(t_data *data, int scale);
+void		ft_update_scale(t_data *data, int scale, int mirror);
 void		ft_update_angle(t_data *data, double angle);
 void		ft_update_scale_z(t_data *data, int scale_z);
+
+void		ft_update_offset_x(t_data *data, int offset_x);
+void		ft_update_offset_y(t_data *data, int offset_y);
 
 #endif
