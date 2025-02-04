@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:25:10 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/04 10:46:51 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:34:31 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 void	ft_update_projection(t_data *data, int projection)
 {
 	data->render.projection = projection;
+	ft_update_image(data);
+}
+
+void	ft_center_map_and_update(t_data *data)
+{
+	ft_center_map(data);
 	ft_update_image(data);
 }
 

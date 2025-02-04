@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/04 12:41:49 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:01:12 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@
 
 # define TRANSLATION_STEP 20
 # define SCALE_Z_STEP 1
-# define ANGLE_STEP 0.1
+# define ANGLE_X_STEP 0.1
+# define ANGLE_Y_STEP 0.1
+# define ANGLE_Z_STEP 0.1
 # define ZOOM_STEP 1
 
 # define SUCCESS 0
@@ -34,11 +36,34 @@
 
 # define ORTHOGONAL_PROJECTION 0
 # define ISOMETRIC_PROJECTION 1
+# define CONIC_PROJECTION 2
 
 # define HUD 0
 # define MAP 1
 
 # define HUD_HEIGHT 40
+# define HUD_OFFSET_X 40
+
+# define KEY_CLOSE 65307
+# define KEY_ORTHOGONAL 49
+# define KEY_ISOMETRIC 50
+# define KEY_CONIC 51
+# define KEY_CENTER 99
+# define KEY_MIRROR 109
+# define KEY_ZOOM_IN 61
+# define KEY_ZOOM_OUT 45
+# define KEY_DECREASE_X_ANGLE 113
+# define KEY_INCREASE_X_ANGLE 101
+# define KEY_DECREASE_Y_ANGLE 97
+# define KEY_INCREASE_Y_ANGLE 100
+# define KEY_DECREASE_Z_ANGLE 119
+# define KEY_INCREASE_Z_ANGLE 115
+# define KEY_DECREASE_SCALE_Z 91
+# define KEY_INCREASE_SCALE_Z 93
+# define KEY_MOVE_UP 65362
+# define KEY_MOVE_DOWN 65364
+# define KEY_MOVE_LEFT 65361
+# define KEY_MOVE_RIGHT 65363
 
 typedef struct s_window
 {
@@ -83,7 +108,9 @@ typedef struct s_point
 
 typedef struct s_isometric
 {
-	double	angle;
+	double	angle_x;
+	double	angle_y;
+	double	angle_z;
 	int		scale_z;
 	int		offset_z;
 
@@ -143,13 +170,18 @@ void		ft_draw_map(t_data *data);
 void		ft_draw_line(t_data *data, t_pixel pix1, t_pixel pix2);
 void		ft_apply_scale_to_pixel(t_point point, t_pixel *pixel, int scale);
 void		ft_apply_offset_to_pixel(t_pixel *pixel, t_render render);
-void		ft_apply_angle_to_pixel(t_pixel *pixel, t_render render);
+void		ft_apply_angle_x_to_pixel(t_pixel *pixel, t_render render);
+void		ft_apply_angle_y_to_pixel(t_pixel *pixel, t_render render);
+void		ft_apply_angle_z_to_pixel(t_pixel *pixel, t_render render);
 void		ft_apply_scale_z_to_pixel(t_point point,
 				t_pixel *pixel, int scale_z);
 void		ft_update_image(t_data *data);
 void		ft_update_projection(t_data *data, int projection);
+void		ft_center_map_and_update(t_data *data);
 void		ft_update_scale(t_data *data, int scale);
-void		ft_update_angle(t_data *data, double angle);
+void		ft_update_angle_x(t_data *data, double angle_x);
+void		ft_update_angle_y(t_data *data, double angle_y);
+void		ft_update_angle_z(t_data *data, double angle_z);
 void		ft_update_scale_z(t_data *data, int scale_z);
 void		ft_update_offset_x(t_data *data, int offset_x);
 void		ft_update_offset_y(t_data *data, int offset_y);
@@ -159,6 +191,10 @@ void		ft_handle_translation(t_data *data, int keycode);
 void		ft_draw_hud(t_data *data);
 void		ft_draw_infos_hud(t_data *data);
 void		ft_draw_text_hud(t_data *data, char *text, int offset_y);
+void		ft_draw_header_text_hud(t_data *data, char *text, int offset_y);
+void		ft_draw_commands_title_hud(t_data *data, char *text, int offset_y);
+void		ft_draw_commands_general_hud(t_data *data, char *text, int offset_y);
+void		ft_draw_commands_isometric_hud(t_data *data, char *text, int offset_y);
 
 void		ft_print_raw_map(t_data data);
 

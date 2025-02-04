@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:05:24 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/04 11:24:02 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:37:17 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_center_map(t_data *data)
 void	ft_render_isometric_projection(t_point point,
 	t_pixel *pixel, t_render render)
 {
-	ft_apply_angle_to_pixel(pixel, render);
+	ft_apply_angle_x_to_pixel(pixel, render);
 	ft_apply_scale_z_to_pixel(point, pixel,
 		render.render_isometric.scale_z);
 }
