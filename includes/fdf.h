@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/04 16:01:12 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:50:42 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define HUD 0
 # define MAP 1
 
-# define HUD_HEIGHT 40
+# define HUD_HEIGHT 280
 # define HUD_OFFSET_X 40
 
 # define KEY_CLOSE 65307

@@ -8,10 +8,9 @@ CFLAGS = -Wall -Wextra -Werror -g
 MLX_FLAGS = -lmlx -lX11 -lXext
 MATH_FLAG = -lm
 
-FDF_DIR = ./fdf
-FDF_HEADER_DIR = $(FDF_DIR)/includes
-FDF_SRCS_DIR = $(FDF_DIR)/srcs
-FDF_OBJS_DIR = $(FDF_DIR)/objs
+FDF_HEADER_DIR = includes
+FDF_SRCS_DIR = srcs
+FDF_OBJS_DIR = objs
 
 LIBFT_DIR = ./libft
 LIBFT_HEADER_DIR = $(LIBFT_DIR)/includes
@@ -65,7 +64,7 @@ $(MLX):
 	$(MAKE) -C $(MLX_DIR)
 
 $(FDF_NAME): $(FDF_OBJS)
-	$(CC) $(CFLAGS) $(FDF_INCLUDES) $(FDF_OBJS) $(FDF_LIBRARIES) -o $(FDF_DIR)/$(FDF_NAME)
+	$(CC) $(CFLAGS) $(FDF_INCLUDES) $(FDF_OBJS) $(FDF_LIBRARIES) -o $(FDF_NAME)
 
 $(FDF_OBJS_DIR)/%.o: $(FDF_SRCS_DIR)/%.c
 	@mkdir -p $(FDF_OBJS_DIR)
@@ -78,7 +77,7 @@ clean:
 	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
-	rm -f $(FDF_DIR)/$(FDF_NAME)
+	rm -f $(FDF_NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(MAKE) -C $(FT_PRINTF_DIR) fclean
 

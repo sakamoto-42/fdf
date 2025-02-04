@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:45:29 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/03 15:41:45 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:43:14 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 	status_code = ft_allocate_pixels(&data);
 	if (status_code != SUCCESS)
 		return (perror(ft_strerror(status_code)), 1);
-	//ft_print_raw_map(data);
 	ft_init(&data);
 	mlx_key_hook(data.window.win_ptr, ft_handle_keys, &data);
 	mlx_hook(data.window.win_ptr, DestroyNotify,

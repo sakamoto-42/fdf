@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:59:59 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/04 16:08:07 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:51:56 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@ void	ft_draw_header_text_hud(t_data *data, char *text, int offset_y)
 {
 	int		text_width = 6 * ft_strlen(text);
 	int		text_x = (data->window.size_x - text_width) / 2;
-	int		text_y = (HUD_HEIGHT / 2) + offset_y;
+	int		text_y = 20 + offset_y;
 	mlx_string_put(data->mlx_ptr, data->window.win_ptr, text_x, text_y, ft_rgb_to_color(255, 255, 255), text);
 }
 
 void	ft_draw_commands_title_hud(t_data *data, char *text, int offset_y)
 {
 	int		text_x = HUD_OFFSET_X;
-	int		text_y = (HUD_HEIGHT / 2) + offset_y;
+	int		text_y = 20 + offset_y;
 	mlx_string_put(data->mlx_ptr, data->window.win_ptr, text_x, text_y, ft_rgb_to_color(0, 255, 0), text);
 }
 
 void	ft_draw_commands_general_hud(t_data *data, char *text, int offset_y)
 {
 	int		text_x = HUD_OFFSET_X;
-	int		text_y = (HUD_HEIGHT / 2) + offset_y;
+	int		text_y = 20 + offset_y;
 	mlx_string_put(data->mlx_ptr, data->window.win_ptr, text_x, text_y, ft_rgb_to_color(0, 255, 0), text);
 }
 
 void	ft_draw_commands_isometric_hud(t_data *data, char *text, int offset_y)
 {
 	int		text_x = HUD_OFFSET_X + 200;
-	int		text_y = (HUD_HEIGHT / 2) + offset_y;
+	int		text_y = 20 + offset_y;
 	mlx_string_put(data->mlx_ptr, data->window.win_ptr, text_x, text_y, ft_rgb_to_color(0, 255, 0), text);
 }
 
@@ -135,4 +135,3 @@ void	ft_draw_hud(t_data *data)
 		y++;
 	}
 }
-
