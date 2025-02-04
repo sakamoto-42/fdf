@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:36:48 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/03 09:50:02 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:14:58 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_draw_line(t_data *data, t_pixel pix1, t_pixel pix2)
 	bres.err = bres.dx - bres.dy;
 	while (!(pix1.x == pix2.x && pix1.y == pix2.y))
 	{
-		ft_mlx_pixel_put(data, pix1.x, pix1.y, pix1.color);
+		ft_mlx_pixel_put(data, pix1.x, pix1.y, pix1.color, MAP);
 		bres.e2 = bres.err * 2;
 		if (bres.e2 > -bres.dy)
 		{
@@ -47,7 +47,7 @@ void	ft_draw_line(t_data *data, t_pixel pix1, t_pixel pix2)
 			pix1.y += bres.sy;
 		}
 	}
-	ft_mlx_pixel_put(data, pix1.x, pix1.y, pix1.color);
+	ft_mlx_pixel_put(data, pix1.x, pix1.y, pix1.color, MAP);
 }
 
 void	ft_draw_map(t_data *data)
@@ -71,6 +71,4 @@ void	ft_draw_map(t_data *data)
 		}
 		row_count++;
 	}
-	mlx_put_image_to_window(data->mlx_ptr,
-		data->window.win_ptr, data->image.img_ptr, 0, 0);
 }

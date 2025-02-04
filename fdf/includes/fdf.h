@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/04 10:47:11 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:41:49 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,14 @@
 # define ERROR_OPEN_FILE 2
 # define ERROR_EMPTY_FILE 3
 # define ERROR_NOT_ENOUGH_MEMORY 4
-# define ORTHOGONAL_PROJECTION 5
-# define ISOMETRIC_PROJECTION 6
+
+# define ORTHOGONAL_PROJECTION 0
+# define ISOMETRIC_PROJECTION 1
+
+# define HUD 0
+# define MAP 1
+
+# define HUD_HEIGHT 40
 
 typedef struct s_window
 {
@@ -117,7 +123,7 @@ int			ft_init_map(t_data *data);
 void		ft_init_window(t_data *data);
 void		ft_init_image(t_data *data);
 int			ft_rgb_to_color(int r, int g, int b);
-void		ft_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		ft_mlx_pixel_put(t_data *data, int x, int y, int color, int mode);
 int			ft_allocate_points(t_data *data);
 t_point		**ft_free_points_until(t_point **points, size_t n);
 t_pixel		**ft_free_points(t_data *data);
@@ -150,6 +156,9 @@ void		ft_update_offset_y(t_data *data, int offset_y);
 int			ft_handle_close(t_data *data);
 int			ft_handle_keys(int keycode, t_data *data);
 void		ft_handle_translation(t_data *data, int keycode);
+void		ft_draw_hud(t_data *data);
+void		ft_draw_infos_hud(t_data *data);
+void		ft_draw_text_hud(t_data *data, char *text, int offset_y);
 
 void		ft_print_raw_map(t_data data);
 

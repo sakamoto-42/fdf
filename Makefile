@@ -38,6 +38,7 @@ FDF_SRCS_FILES = \
 		error_msg.c \
 		fdf.c \
 		handle_keys.c \
+		hud.c \
 		init_map.c \
 		init.c \
 		mlx_init.c \
