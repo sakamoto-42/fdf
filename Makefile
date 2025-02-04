@@ -31,21 +31,24 @@ FDF_LIBRARIES = -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -L$(MLX_DIR) $
 FDF_SRCS_FILES = \
 		allocate_and_free_pixels.c \
 		allocate_and_free_points.c \
+		apply_params_to_pixels.c \
 		debug.c \
+		destroy_and_free.c \
 		draw_map.c \
 		error_msg.c \
 		fdf.c \
+		handle_keys.c \
 		init_map.c \
 		init.c \
 		mlx_init.c \
 		mlx_utils.c \
+		render_map_utils.c \
+		render_map.c \
 		set_pixels.c \
 		set_points.c \
-		apply_params_to_pixels.c \
+		update_image_utils_isometric.c \
+		update_image_utils.c \
 		update_image.c \
-		handle_keys.c \
-		destroy_and_free.c \
-		render_map.c \
 
 FDF_OBJS = $(addprefix $(FDF_OBJS_DIR)/, $(FDF_SRCS_FILES:.c=.o))
 

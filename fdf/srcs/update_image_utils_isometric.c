@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_map.c                                       :+:      :+:    :+:   */
+/*   update_image_utils_isometric.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 15:30:14 by julien            #+#    #+#             */
-/*   Updated: 2025/02/03 09:50:26 by juduchar         ###   ########.fr       */
+/*   Created: 2025/02/03 10:26:07 by juduchar          #+#    #+#             */
+/*   Updated: 2025/02/04 09:29:40 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_render_map(t_data *data)
+void	ft_update_angle(t_data *data, double angle)
 {
-	ft_init_image(data);
-	ft_init_pixels(data);
-	ft_draw_map(data);
+	//if (angle > -4 && angle < 1)
+	//{
+		data->render.render_isometric.angle = angle;
+		ft_update_image(data);
+	//}
+}
+
+void	ft_update_scale_z(t_data *data, int scale_z)
+{
+	data->render.render_isometric.scale_z = scale_z;
+	ft_update_image(data);
 }

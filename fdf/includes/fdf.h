@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/01 08:28:51 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/04 10:47:11 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@
 # include <stdio.h>
 # include <math.h>
 
-# define WINDOWS_RESIZE_STEP 100
+# define TRANSLATION_STEP 20
+# define SCALE_Z_STEP 1
+# define ANGLE_STEP 0.1
+# define ZOOM_STEP 1
 
 # define SUCCESS 0
 # define INVALID_NUMBER_OF_ARGUMENTS 1
 # define ERROR_OPEN_FILE 2
 # define ERROR_EMPTY_FILE 3
 # define ERROR_NOT_ENOUGH_MEMORY 4
-
 # define ORTHOGONAL_PROJECTION 5
 # define ISOMETRIC_PROJECTION 6
-# define MIRROR	7
-
 
 typedef struct s_window
 {
@@ -112,9 +112,12 @@ typedef struct s_data
 
 char		*ft_strerror(int errnum);
 void		ft_init(t_data *data);
+void		ft_init_default_settings(t_data *data);
 int			ft_init_map(t_data *data);
 void		ft_init_window(t_data *data);
 void		ft_init_image(t_data *data);
+int			ft_rgb_to_color(int r, int g, int b);
+void		ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			ft_allocate_points(t_data *data);
 t_point		**ft_free_points_until(t_point **points, size_t n);
 t_pixel		**ft_free_points(t_data *data);
@@ -122,39 +125,32 @@ int			ft_allocate_pixels(t_data *data);
 t_pixel		**ft_free_pixels_until(t_pixel **pixels, size_t n);
 t_pixel		**ft_free_pixels(t_data *data);
 int			ft_set_points(t_data *data);
+void		ft_init_pixels(t_data *data);
+void		ft_set_pixels_color(t_data *data, int color);
 void		ft_points_to_pixels(t_data *data);
-void		ft_apply_isometric_projection(t_render *render,
-				t_point point, t_pixel *pixel);
-void		ft_init_pixels_color(t_data *data);
-void		ft_print_raw_map(t_data data);
-void		ft_print_map(t_data data);
-int			ft_rgb_to_color(int r, int g, int b);
-void		ft_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		ft_render_map(t_data *data);
+void		ft_render_isometric_projection(t_point point,
+				t_pixel *pixel, t_render render);
+void		ft_center_map(t_data *data);
+void		ft_destroy_and_free_all(t_data *data);
 void		ft_draw_map(t_data *data);
 void		ft_draw_line(t_data *data, t_pixel pix1, t_pixel pix2);
-void		ft_init_default_settings(t_data *data);
-void		ft_set_pixels_color(t_data *data, int color);
-void		ft_center_map(t_data *data);
-void		ft_init_pixels(t_data *data);
-int			ft_handle_close(t_data *data);
-int			ft_handle_resize(t_data *data, int new_size_x, int new_size_y);
 void		ft_apply_scale_to_pixel(t_point point, t_pixel *pixel, int scale);
 void		ft_apply_offset_to_pixel(t_pixel *pixel, t_render render);
 void		ft_apply_angle_to_pixel(t_pixel *pixel, t_render render);
 void		ft_apply_scale_z_to_pixel(t_point point,
 				t_pixel *pixel, int scale_z);
 void		ft_update_image(t_data *data);
-int			ft_handle_keys(int keycode, t_data *data);
-void		ft_destroy_and_free_all(t_data *data);
-void		ft_render_map(t_data *data);
-int			ft_handle_close(t_data *data);
-
 void		ft_update_projection(t_data *data, int projection);
-void		ft_update_scale(t_data *data, int scale, int mirror);
+void		ft_update_scale(t_data *data, int scale);
 void		ft_update_angle(t_data *data, double angle);
 void		ft_update_scale_z(t_data *data, int scale_z);
-
 void		ft_update_offset_x(t_data *data, int offset_x);
 void		ft_update_offset_y(t_data *data, int offset_y);
+int			ft_handle_close(t_data *data);
+int			ft_handle_keys(int keycode, t_data *data);
+void		ft_handle_translation(t_data *data, int keycode);
+
+void		ft_print_raw_map(t_data data);
 
 #endif
