@@ -6,11 +6,25 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:21:41 by julien            #+#    #+#             */
-/*   Updated: 2025/02/04 16:37:38 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:11:50 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	ft_free_hud_panels(t_data *data)
+{
+	if (data->header_panel.texts)
+		free(data->header_panel.texts);
+	/*
+	if (data->left_panel_1.texts)
+		free(data->left_panel_1.texts);
+	if (data->left_panel_2.texts)
+		free(data->left_panel_2.texts);
+	if (data->right_panel.texts)
+		free(data->right_panel.texts);
+	*/
+}
 
 void	ft_destroy_and_free_all(t_data *data)
 {
@@ -27,4 +41,5 @@ void	ft_destroy_and_free_all(t_data *data)
 		ft_free_points(data);
 	if (data->pixels)
 		ft_free_pixels(data);
+	ft_free_hud_panels(data);
 }

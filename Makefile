@@ -33,6 +33,7 @@ FDF_SRCS_FILES = \
 		apply_params_to_pixels.c \
 		debug.c \
 		destroy_and_free.c \
+		draw_hud.c \
 		draw_map.c \
 		error_msg.c \
 		fdf.c \
@@ -49,6 +50,7 @@ FDF_SRCS_FILES = \
 		update_image_utils_isometric.c \
 		update_image_utils.c \
 		update_image.c \
+		write_infos_hud.c \
 
 FDF_OBJS = $(addprefix $(FDF_OBJS_DIR)/, $(FDF_SRCS_FILES:.c=.o))
 

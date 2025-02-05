@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:58:17 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/04 11:42:17 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:15:37 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color, int mode)
 	if (mode == HUD)
 		y_limit_min = 0;
 	else if (mode == MAP)
-		y_limit_min = HUD_HEIGHT;
+		y_limit_min = data->hud_height;
 	if (x < 0 || x >= data->window.size_x || y < y_limit_min || y >= data->window.size_y)
 		return ;
 	dst = data->image.data_addr

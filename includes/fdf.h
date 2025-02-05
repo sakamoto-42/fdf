@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/04 16:50:42 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:17:37 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@
 # define HUD 0
 # define MAP 1
 
-# define HUD_HEIGHT 280
-# define HUD_OFFSET_X 40
+# define HUD_TEXT_HEIGHT 20
 
 # define KEY_CLOSE 65307
 # define KEY_ORTHOGONAL 49
@@ -71,6 +70,7 @@ typedef struct s_window
 	char	*title;
 	int		size_x;
 	int		size_y;
+	int		hud_height;
 }	t_window;
 
 typedef struct s_image
@@ -133,12 +133,36 @@ typedef struct s_map
 	t_point		**points;
 }		t_map;
 
+typedef struct s_text_hud
+{
+	char *text;
+	int	offset_x;
+	int	offset_y;
+	int	color;
+}		t_text_hud;
+
+typedef struct s_panel_hud
+{
+	int	texts_count;
+	t_text_hud	*texts;
+	int size_x;
+	int size_y;
+	int offset_x;
+	int offset_y;
+	int	color;
+}		t_panel_hud;
+
 typedef struct s_data
 {
 	void			*mlx_ptr;
 	t_window		window;
 	t_image			image;
 	t_pixel			**pixels;
+	int				hud_height;
+	t_panel_hud		header_panel;
+	t_panel_hud		left_panel_1;
+	t_panel_hud		left_panel_2;
+	t_panel_hud		right_panel;
 	t_map			map;
 	t_render		render;
 }		t_data;
@@ -165,6 +189,7 @@ void		ft_render_map(t_data *data);
 void		ft_render_isometric_projection(t_point point,
 				t_pixel *pixel, t_render render);
 void		ft_center_map(t_data *data);
+void		ft_free_hud_panels(t_data *data);
 void		ft_destroy_and_free_all(t_data *data);
 void		ft_draw_map(t_data *data);
 void		ft_draw_line(t_data *data, t_pixel pix1, t_pixel pix2);
@@ -188,14 +213,13 @@ void		ft_update_offset_y(t_data *data, int offset_y);
 int			ft_handle_close(t_data *data);
 int			ft_handle_keys(int keycode, t_data *data);
 void		ft_handle_translation(t_data *data, int keycode);
+void		ft_init_hud(t_data *data);
 void		ft_draw_hud(t_data *data);
-void		ft_draw_infos_hud(t_data *data);
-void		ft_draw_text_hud(t_data *data, char *text, int offset_y);
-void		ft_draw_header_text_hud(t_data *data, char *text, int offset_y);
-void		ft_draw_commands_title_hud(t_data *data, char *text, int offset_y);
-void		ft_draw_commands_general_hud(t_data *data, char *text, int offset_y);
-void		ft_draw_commands_isometric_hud(t_data *data, char *text, int offset_y);
+void		ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud);
+void		ft_write_hud_infos(t_data *data);
+void		ft_write_infos(t_data *data, t_panel_hud *panel);
 
+// DEBUG
 void		ft_print_raw_map(t_data data);
 
 #endif

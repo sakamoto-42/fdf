@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:05:24 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/04 15:37:17 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:36:35 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_center_map(t_data *data)
 		data->render.offset_y = (data->window.size_y / 2)
 			- ((data->map.cols + data->map.rows) * data->render.scale / 2) / 2;
 	}
-	data->render.offset_y += HUD_HEIGHT;
+	data->render.offset_y += data->hud_height;
 }
 
 
