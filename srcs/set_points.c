@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:51:53 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/03 09:43:56 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/05 22:16:31 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_set_points(t_data *data)
 
 	fd = open(data->map.map_file, O_RDONLY);
 	if (fd == -1)
-		return (ERROR_OPEN_FILE);
+		return (ERROR_CANNOT_OPEN_FILE);
 	current_row = get_next_line(fd);
 	if (!current_row)
 		return (close(fd), ERROR_EMPTY_FILE);

@@ -38,7 +38,6 @@ FDF_SRCS_FILES = \
 		error_msg.c \
 		fdf.c \
 		handle_keys.c \
-		hud.c \
 		init_map.c \
 		init.c \
 		mlx_init.c \
@@ -47,8 +46,6 @@ FDF_SRCS_FILES = \
 		render_map.c \
 		set_pixels.c \
 		set_points.c \
-		update_image_utils_isometric.c \
-		update_image_utils.c \
 		update_image.c \
 		write_infos_hud.c \
 

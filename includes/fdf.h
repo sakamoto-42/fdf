@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/05 20:17:37 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/05 23:14:06 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@
 # define ZOOM_STEP 1
 
 # define SUCCESS 0
-# define INVALID_NUMBER_OF_ARGUMENTS 1
-# define ERROR_OPEN_FILE 2
+# define ERROR_INVALID_NUMBER_OF_ARGUMENTS 1
+# define ERROR_CANNOT_OPEN_FILE 2
 # define ERROR_EMPTY_FILE 3
 # define ERROR_NOT_ENOUGH_MEMORY 4
+# define ERROR_MLX_INIT_FAILED 5
+# define ERROR_MLX_WINDOW_INIT_FAILED 6
+# define ERROR_MLX_IMG_INIT_FAILED 7
+# define ERROR_MLX_GET_IMG_ADDRESS_FAILED 7
 
 # define ORTHOGONAL_PROJECTION 0
 # define ISOMETRIC_PROJECTION 1
@@ -89,6 +93,12 @@ typedef struct s_pixel
 	unsigned int	color;
 }		t_pixel;
 
+typedef struct s_line
+{
+	t_pixel	pixel_1;
+	t_pixel	pixel_2;
+}		t_line;
+
 typedef struct s_bresenham
 {
 	int	dx;
@@ -135,21 +145,21 @@ typedef struct s_map
 
 typedef struct s_text_hud
 {
-	char *text;
-	int	offset_x;
-	int	offset_y;
-	int	color;
+	char	*text;
+	int		offset_x;
+	int		offset_y;
+	int		color;
 }		t_text_hud;
 
 typedef struct s_panel_hud
 {
-	int	texts_count;
+	int			texts_count;
 	t_text_hud	*texts;
-	int size_x;
-	int size_y;
-	int offset_x;
-	int offset_y;
-	int	color;
+	int			size_x;
+	int			size_y;
+	int			offset_x;
+	int			offset_y;
+	int			color;
 }		t_panel_hud;
 
 typedef struct s_data
@@ -168,13 +178,13 @@ typedef struct s_data
 }		t_data;
 
 char		*ft_strerror(int errnum);
-void		ft_init(t_data *data);
+int			ft_init(t_data *data);
 void		ft_init_default_settings(t_data *data);
 int			ft_init_map(t_data *data);
-void		ft_init_window(t_data *data);
-void		ft_init_image(t_data *data);
+int			ft_init_window(t_data *data);
+int			ft_init_image(t_data *data);
 int			ft_rgb_to_color(int r, int g, int b);
-void		ft_mlx_pixel_put(t_data *data, int x, int y, int color, int mode);
+void		ft_mlx_pixel_put(t_data *data, t_pixel pixel, int color, int mode);
 int			ft_allocate_points(t_data *data);
 t_point		**ft_free_points_until(t_point **points, size_t n);
 t_pixel		**ft_free_points(t_data *data);
@@ -185,14 +195,14 @@ int			ft_set_points(t_data *data);
 void		ft_init_pixels(t_data *data);
 void		ft_set_pixels_color(t_data *data, int color);
 void		ft_points_to_pixels(t_data *data);
-void		ft_render_map(t_data *data);
+int			ft_render_map(t_data *data);
 void		ft_render_isometric_projection(t_point point,
 				t_pixel *pixel, t_render render);
 void		ft_center_map(t_data *data);
 void		ft_free_hud_panels(t_data *data);
 void		ft_destroy_and_free_all(t_data *data);
 void		ft_draw_map(t_data *data);
-void		ft_draw_line(t_data *data, t_pixel pix1, t_pixel pix2);
+void		ft_draw_line(t_data *data, t_line line);
 void		ft_apply_scale_to_pixel(t_point point, t_pixel *pixel, int scale);
 void		ft_apply_offset_to_pixel(t_pixel *pixel, t_render render);
 void		ft_apply_angle_x_to_pixel(t_pixel *pixel, t_render render);
@@ -200,24 +210,18 @@ void		ft_apply_angle_y_to_pixel(t_pixel *pixel, t_render render);
 void		ft_apply_angle_z_to_pixel(t_pixel *pixel, t_render render);
 void		ft_apply_scale_z_to_pixel(t_point point,
 				t_pixel *pixel, int scale_z);
-void		ft_update_image(t_data *data);
-void		ft_update_projection(t_data *data, int projection);
-void		ft_center_map_and_update(t_data *data);
-void		ft_update_scale(t_data *data, int scale);
-void		ft_update_angle_x(t_data *data, double angle_x);
-void		ft_update_angle_y(t_data *data, double angle_y);
-void		ft_update_angle_z(t_data *data, double angle_z);
-void		ft_update_scale_z(t_data *data, int scale_z);
-void		ft_update_offset_x(t_data *data, int offset_x);
-void		ft_update_offset_y(t_data *data, int offset_y);
+int			ft_update_image(t_data *data);
 int			ft_handle_close(t_data *data);
 int			ft_handle_keys(int keycode, t_data *data);
 void		ft_handle_translation(t_data *data, int keycode);
-void		ft_init_hud(t_data *data);
+int			ft_init_hud(t_data *data);
+int			ft_allocate_panel_texts(t_panel_hud *panel);
+int			ft_init_header_panel(t_data *data);
 void		ft_draw_hud(t_data *data);
 void		ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud);
 void		ft_write_hud_infos(t_data *data);
 void		ft_write_infos(t_data *data, t_panel_hud *panel);
+void		ft_set_dynamic_infos(t_data *data);
 
 // DEBUG
 void		ft_print_raw_map(t_data data);

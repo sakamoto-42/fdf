@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hud.c                                              :+:      :+:    :+:   */
+/*   hud_TOREMOVE.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:59:59 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/05 12:49:48 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:35:24 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@ void	ft_write_infos_header_text_hud(t_data *data, int *offset_y)
 		ft_draw_commands_general_hud(data, "Isometric projection : 2", offset_y);
 		offset_y += 20;
 	}
+	if (data->render.projection != CONIC_PROJECTION)
+	{
+		ft_draw_commands_general_hud(data, "Conic projection : 3", offset_y);
+		offset_y += 20;
+	}
 }
-
-
 
 void	ft_write_left_panel_title_hud(t_data *data, char *text, int offset_y)
 {

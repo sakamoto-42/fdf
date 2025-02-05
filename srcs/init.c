@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/05 20:19:20 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/05 23:23:21 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	ft_get_screen_size(void *mlx_ptr, int *size_x, int *size_y)
 {
+	*size_x = 800;
+	*size_y = 600;
 	mlx_get_screen_size(mlx_ptr, size_x, size_y);
 }
 
 void	ft_init_default_settings(t_data *data)
 {
-	ft_get_screen_size(data->mlx_ptr, &data->window.size_x, &data->window.size_y);
+	ft_get_screen_size(data->mlx_ptr,
+		&data->window.size_x, &data->window.size_y);
 	data->window.title = "fdf";
 	data->render.projection = ISOMETRIC_PROJECTION;
 	data->render.scale = 20;
@@ -27,13 +30,28 @@ void	ft_init_default_settings(t_data *data)
 	data->render.render_isometric.scale_z = 5;
 }
 
-void	ft_init_hud(t_data *data)
+int	ft_allocate_panel_texts(t_panel_hud *panel)
+{
+	panel->texts = ft_calloc(panel->texts_count, sizeof(t_text_hud));
+	if (!panel->texts)
+		return (0);
+	return (1);
+}
+
+int	ft_init_header_panel(t_data *data)
 {
 	data->header_panel.texts_count = 2;
-	data->header_panel.texts = ft_calloc(data->header_panel.texts_count, sizeof(t_text_hud));
-	if (!data->header_panel.texts)
-		return ;
-	int i;
+	if (!ft_allocate_panel_texts(&data->header_panel))
+		return (0);
+	return (1);
+}
+
+int	ft_init_hud(t_data *data)
+{
+	if (!ft_init_header_panel(data))
+		return (0);
+	// TO SPLIT
+	int	i;
 	i = 0;
 	while (i < data->header_panel.texts_count)
 	{
@@ -50,6 +68,10 @@ void	ft_init_hud(t_data *data)
 	data->header_panel.offset_y = 0;
 	data->header_panel.color = ft_rgb_to_color(255, 0, 0);
 	
+	//data->left_panel_1.texts_count = 7;
+	//data->header_panel.texts = ft_calloc(data->header_panel.texts_count, sizeof(t_text_hud));
+	//if (!data->header_panel.texts)
+		//return ;
 	
 	// TODO
 	/*
@@ -60,14 +82,24 @@ void	ft_init_hud(t_data *data)
 	*/
 
 	data->hud_height = data->header_panel.size_y;
+	return (1);
 }
 
-void	ft_init(t_data *data)
+int	ft_init(t_data *data)
 {
+	int	status_code;
+
 	data->mlx_ptr = mlx_init();
+	if (!data->mlx_ptr)
+		return (ERROR_MLX_INIT_FAILED);
 	ft_init_default_settings(data);
-	ft_init_window(data);
-	ft_init_hud(data);
+	if (!ft_init_window(data))
+		return (ERROR_MLX_WINDOW_INIT_FAILED);
+	if (!ft_init_hud(data))
+		return (ERROR_NOT_ENOUGH_MEMORY);
 	ft_center_map(data);
-	ft_render_map(data);
+	status_code = ft_render_map(data);
+	if (status_code != SUCCESS)
+		return (status_code);
+	return (SUCCESS);
 }

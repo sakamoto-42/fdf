@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:50:27 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/05 20:12:43 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/05 23:11:22 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,17 @@ void	ft_draw_hud(t_data *data)
 
 void	ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud)
 {
-	int	x;
-	int	y;
+	t_pixel	pixel;
 
-	y = panel_hud.offset_y;
-	while (y < panel_hud.size_y)
+	pixel.y = panel_hud.offset_y;
+	while (pixel.y < panel_hud.size_y)
 	{
-		x = panel_hud.offset_x;
-		while (x < panel_hud.size_x)
+		pixel.x = panel_hud.offset_x;
+		while (pixel.x < panel_hud.size_x)
 		{
-			ft_mlx_pixel_put(data, x, y, panel_hud.color, HUD);
-			x++;
+			ft_mlx_pixel_put(data, pixel, panel_hud.color, HUD);
+			pixel.x++;
 		}
-		y++;
+		pixel.y++;
 	}
 }

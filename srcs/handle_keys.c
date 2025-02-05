@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:18:25 by julien            #+#    #+#             */
-/*   Updated: 2025/02/04 16:38:18 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/05 23:22:06 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,17 @@
 
 void	ft_handle_translation(t_data *data, int keycode)
 {
-	if (keycode == 65362)
-	{
-		//ft_printf("UP");
-		ft_update_offset_y(data, data->render.offset_y - TRANSLATION_STEP);
-	}
-	if (keycode == 65364)
-	{
-		//ft_printf("DOWN");
-		ft_update_offset_y(data, data->render.offset_y + TRANSLATION_STEP);
-	}
-	if (keycode == 65361)
-	{
-		//ft_printf("LEFT");
-		ft_update_offset_x(data, data->render.offset_x - TRANSLATION_STEP);
-	}
-	if (keycode == 65363)
-	{
-		//ft_printf("RIGHT");
-		ft_update_offset_x(data, data->render.offset_x + TRANSLATION_STEP);
-	}
-	
+	if (keycode == KEY_MOVE_UP)
+		data->render.offset_y = data->render.offset_y - TRANSLATION_STEP;
+	if (keycode == KEY_MOVE_DOWN)
+		data->render.offset_y = data->render.offset_y + TRANSLATION_STEP;
+	if (keycode == KEY_MOVE_LEFT)
+		data->render.offset_x = data->render.offset_x - TRANSLATION_STEP;
+	if (keycode == KEY_MOVE_RIGHT)
+		data->render.offset_x = data->render.offset_x + TRANSLATION_STEP;
 }
-#include <stdio.h>
 
+// TO SPLIT
 int	ft_handle_keys(int keycode, t_data *data)
 {
 	if (keycode == KEY_MOVE_UP || keycode == KEY_MOVE_DOWN || keycode == KEY_MOVE_LEFT || keycode == KEY_MOVE_RIGHT)
@@ -45,35 +32,36 @@ int	ft_handle_keys(int keycode, t_data *data)
 	if (keycode == KEY_CLOSE)
 		ft_handle_close(data);
 	if (keycode == KEY_ORTHOGONAL && data->render.projection != ORTHOGONAL_PROJECTION)
-		ft_update_projection(data, ORTHOGONAL_PROJECTION);
+		data->render.projection = ORTHOGONAL_PROJECTION;
 	if (keycode == KEY_ISOMETRIC && data->render.projection != ISOMETRIC_PROJECTION)
-		ft_update_projection(data, ISOMETRIC_PROJECTION);
+		data->render.projection = ISOMETRIC_PROJECTION;
 	if (keycode == KEY_CONIC && data->render.projection != ISOMETRIC_PROJECTION)
-		ft_update_projection(data, ISOMETRIC_PROJECTION);
+		data->render.projection = CONIC_PROJECTION;
 	if (keycode == KEY_CENTER)
-		ft_center_map_and_update(data);
+		ft_center_map(data);
 	if (keycode == KEY_MIRROR)
-		ft_update_scale(data, -data->render.scale);
+		data->render.scale = -data->render.scale;
 	if (keycode == KEY_ZOOM_IN)
-		ft_update_scale(data, data->render.scale + ZOOM_STEP);
+		data->render.scale = data->render.scale + ZOOM_STEP;
 	if (keycode == KEY_ZOOM_OUT)
-		ft_update_scale(data, data->render.scale - ZOOM_STEP);
+		data->render.scale = data->render.scale - ZOOM_STEP;
 	if (keycode == KEY_DECREASE_X_ANGLE && data->render.projection == ISOMETRIC_PROJECTION)
-		ft_update_angle_x(data, data->render.render_isometric.angle_x - ANGLE_X_STEP);
+		data->render.render_isometric.angle_x = data->render.render_isometric.angle_x - ANGLE_X_STEP;
 	if (keycode == KEY_INCREASE_X_ANGLE && data->render.projection == ISOMETRIC_PROJECTION)
-		ft_update_angle_x(data, data->render.render_isometric.angle_x + ANGLE_X_STEP);
+		data->render.render_isometric.angle_x = data->render.render_isometric.angle_x + ANGLE_X_STEP;
 	if (keycode == KEY_DECREASE_Y_ANGLE && data->render.projection == ISOMETRIC_PROJECTION)
-		ft_update_angle_y(data, data->render.render_isometric.angle_y - ANGLE_Y_STEP);
+		data->render.render_isometric.angle_y = data->render.render_isometric.angle_y - ANGLE_Y_STEP;
 	if (keycode == KEY_INCREASE_Y_ANGLE && data->render.projection == ISOMETRIC_PROJECTION)
-		ft_update_angle_y(data, data->render.render_isometric.angle_y + ANGLE_Y_STEP);
+		data->render.render_isometric.angle_y = data->render.render_isometric.angle_y + ANGLE_Y_STEP;
 	if (keycode == KEY_DECREASE_Z_ANGLE && data->render.projection == ISOMETRIC_PROJECTION)
-		ft_update_angle_z(data, data->render.render_isometric.angle_z - ANGLE_Z_STEP);
+		data->render.render_isometric.angle_z = data->render.render_isometric.angle_z - ANGLE_Z_STEP;
 	if (keycode == KEY_INCREASE_Z_ANGLE && data->render.projection == ISOMETRIC_PROJECTION)
-		ft_update_angle_z(data, data->render.render_isometric.angle_z + ANGLE_Z_STEP);
+		data->render.render_isometric.angle_z = data->render.render_isometric.angle_z + ANGLE_Z_STEP;
 	if (keycode == KEY_DECREASE_SCALE_Z && data->render.projection == ISOMETRIC_PROJECTION)
-		ft_update_scale_z(data, data->render.render_isometric.scale_z - (float)((float)SCALE_Z_STEP / 10));
+		data->render.render_isometric.scale_z = data->render.render_isometric.scale_z - (float)((float)SCALE_Z_STEP / 10);
 	if (keycode == KEY_INCREASE_SCALE_Z && data->render.projection == ISOMETRIC_PROJECTION)
-		ft_update_scale_z(data, data->render.render_isometric.scale_z + SCALE_Z_STEP);
+		data->render.render_isometric.scale_z = data->render.render_isometric.scale_z + SCALE_Z_STEP;
+	ft_update_image(data);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:52:26 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/05 20:18:42 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:35:27 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_write_infos(t_data *data, t_panel_hud *panel)
 		i++;
 	}
 }
+
 /*
 void	ft_write_infos_hud(t_data *data)
 {
@@ -51,11 +52,6 @@ void	ft_write_infos_hud(t_data *data)
 	text_hud.offset_y = 0;
 	ft_write_infos_left_panel_general(data, &text_hud);
 
-	if (data->render.projection != CONIC_PROJECTION)
-	{
-		ft_draw_commands_general_hud(data, "Conic projection : 3", offset_y);
-		offset_y += 20;
-	}
 	ft_draw_commands_general_hud(data, "Center : C", offset_y);
 	offset_y += 20;
 	ft_draw_commands_general_hud(data, "Mirror : M", offset_y);
