@@ -6,7 +6,7 @@
 /*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/06 12:30:27 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/06 12:57:32 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,5 +240,5 @@ void		ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud);
 void		ft_write_hud_infos(t_data *data);
 void		ft_write_infos(t_data *data, t_panel_hud *panel);
 void		ft_set_dynamic_infos(t_data *data);
-void		ft_print_raw_map(t_data data);
+
 #endif

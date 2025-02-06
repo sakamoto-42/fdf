@@ -6,7 +6,7 @@
 /*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:53:11 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 12:36:55 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/06 13:55:15 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	ft_init_hud(t_data *data)
 {
 	if (!ft_init_header_panel(data, &data->header_panel))
 		return (0);
-	//if (!ft_init_left_panel_1(data, data->left_panel_1))
-	//	return (0);
+	if (!ft_init_left_panel_1(data, data->left_panel_1))
+		return (0);
 	//if (!ft_init_left_panel_2(data, data->left_panel_2))
 	//	return (0);
 	//if (!ft_init_right_panel(data, data->right_panel))

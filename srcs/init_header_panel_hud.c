@@ -6,7 +6,7 @@
 /*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:00:49 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 12:55:38 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/06 14:01:05 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	ft_set_header_panel_texts(t_data *data, t_panel_hud *header_panel)
 	header_panel->texts[0].offset_x = (data->window.size_x - 6
 			* ft_strlen(data->header_panel.texts[0].text)) / 2;
 	header_panel->texts[0].color = ft_rgb_to_color(255, 255, 255);
+	header_panel->texts[1].text = "";
+	header_panel->texts[1].offset_x = 0;
 	header_panel->texts[1].color = ft_rgb_to_color(255, 255, 255);
 }
 
