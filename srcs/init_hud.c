@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   init_hud.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:53:11 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 13:55:15 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:32:08 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	ft_set_panel_texts_offset_x(t_panel_hud *panel, int offset_x, int start)
+{
+	int	i;
+
+	i = start;
+	while (i < panel->texts_count)
+	{
+		panel->texts[i].offset_x = offset_x;
+		i++;
+	}
+}
+
+void	ft_set_panel_texts_color(t_panel_hud *panel, int color, int start)
+{
+	int	i;
+
+	i = start;
+	while (i < panel->texts_count)
+	{
+		panel->texts[i].color = color;
+		i++;
+	}
+}
 
 int	ft_allocate_panel_texts(t_panel_hud *panel)
 {
@@ -20,14 +44,14 @@ int	ft_allocate_panel_texts(t_panel_hud *panel)
 	return (1);
 }
 
-void	ft_set_panel_texts_offset_y(t_panel_hud *panel)
+void	ft_set_panel_texts_offset_y(t_panel_hud *panel, int start)
 {
 	int	i;
 
 	i = 0;
 	while (i < panel->texts_count)
 	{
-		panel->texts[i].offset_y = (i + 1) * HUD_TEXT_HEIGHT;
+		panel->texts[i].offset_y = start + ((i + 1) * HUD_TEXT_HEIGHT);
 		i++;
 	}
 }
@@ -36,14 +60,14 @@ int	ft_init_hud(t_data *data)
 {
 	if (!ft_init_header_panel(data, &data->header_panel))
 		return (0);
-	if (!ft_init_left_panel_1(data, data->left_panel_1))
+	if (!ft_init_left_panel_1(data, &data->left_panel_1))
 		return (0);
 	//if (!ft_init_left_panel_2(data, data->left_panel_2))
 	//	return (0);
 	//if (!ft_init_right_panel(data, data->right_panel))
 	//	return (0);
-	data->hud_height = data->header_panel.size_y;
-		//+ data->left_panel_1.size_y + data->left_panel_2.size_y
+	data->hud_height = data->header_panel.size_y + data->left_panel_1.size_y;
+	//+ data->left_panel_2.size_y
 		//+ data->right_panel.size_y;
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/06 12:57:32 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:37:27 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define MAP 1
 
 # define HUD_TEXT_HEIGHT 20
+# define HUD_TEXT_OFFSET_X 20
 
 # define KEY_CLOSE 65307
 # define KEY_ORTHOGONAL 49
@@ -219,26 +220,29 @@ void		ft_handle_keys_change_projection(t_data *data, int keycode);
 void		ft_handle_keys_common(t_data *data, int keycode);
 int			ft_init_hud(t_data *data);
 int			ft_allocate_panel_texts(t_panel_hud *panel);
-void		ft_set_panel_texts_offset_y(t_panel_hud *panel);
+void		ft_set_panel_texts_offset_x(t_panel_hud *panel, int offset_x, int start);
+void		ft_set_panel_texts_offset_y(t_panel_hud *panel, int start);
+void		ft_set_panel_texts_color(t_panel_hud *panel, int color, int start);
 int			ft_init_header_panel(t_data *data, t_panel_hud *header_panel);
-void		ft_set_header_panel_texts(t_data *data, t_panel_hud *header_panel);
 void		ft_set_header_panel_display(t_data *data,
 				t_panel_hud *header_panel);
+void		ft_set_header_panel_texts(t_data *data, t_panel_hud *header_panel);
+void		ft_set_header_panel_dynamic_texts(t_data *data, t_panel_hud *header_panel);
 int			ft_init_left_panel_1(t_data *data, t_panel_hud *left_panel_1);
-void		ft_set_left_panel_1_texts(t_data *data, t_panel_hud *left_panel_1);
 void		ft_set_left_panel_1_display(t_data *data,
 				t_panel_hud *left_panel_1);
+void		ft_set_left_panel_1_texts(t_panel_hud *left_panel_1);
+void		ft_set_left_panel_1_dynamic_texts(t_data *data, t_panel_hud *left_panel_1);
 int			ft_init_left_panel_2(t_data *data, t_panel_hud *left_panel_2);
-void		ft_set_left_panel_2_texts(t_data *data, t_panel_hud *left_panel_2);
 void		ft_set_left_panel_2_display(t_data *data,
 				t_panel_hud *left_panel_2);
+void		ft_set_left_panel_2_texts(t_data *data, t_panel_hud *left_panel_2);
 int			ft_init_right_panel(t_data *data, t_panel_hud *right_panel);
-void		ft_set_right_panel_texts(t_data *data, t_panel_hud *right_panel);
 void		ft_set_right_panel_display(t_data *data, t_panel_hud *right_panel);
+void		ft_set_right_panel_texts(t_data *data, t_panel_hud *right_panel);
 void		ft_draw_hud(t_data *data);
 void		ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud);
 void		ft_write_hud_infos(t_data *data);
 void		ft_write_infos(t_data *data, t_panel_hud *panel);
-void		ft_set_dynamic_infos(t_data *data);
 
 #endif

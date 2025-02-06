@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   draw_hud.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:50:27 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/06 11:37:28 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/06 15:34:31 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // TO ADD
-//ft_draw_panel_hud(data, data->left_panel_1);
+//
 //ft_draw_panel_hud(data, data->left_panel_2);
 //ft_draw_panel_hud(data, data->right_panel);
 void	ft_draw_hud(t_data *data)
 {
 	ft_draw_panel_hud(data, data->header_panel);
+	ft_draw_panel_hud(data, data->left_panel_1);
 }
 
 void	ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud)
@@ -26,7 +27,7 @@ void	ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud)
 	t_pixel	pixel;
 
 	pixel.y = panel_hud.offset_y;
-	while (pixel.y < panel_hud.size_y)
+	while (pixel.y < panel_hud.size_y + panel_hud.offset_y)
 	{
 		pixel.x = panel_hud.offset_x;
 		while (pixel.x < panel_hud.size_x)

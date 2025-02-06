@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keys_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:30:33 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 11:33:45 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:42:30 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_handle_keys_change_projection(t_data *data, int keycode)
 		&& data->render.projection != ISOMETRIC_PROJECTION)
 		data->render.projection = ISOMETRIC_PROJECTION;
 	if (keycode == KEY_CONIC
-		&& data->render.projection != ISOMETRIC_PROJECTION)
+		&& data->render.projection != CONIC_PROJECTION)
 		data->render.projection = CONIC_PROJECTION;
 }
 

@@ -3,35 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   write_infos_hud.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:52:26 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/06 11:14:46 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:38:35 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_set_dynamic_infos(t_data *data)
-{
-	if (data->render.projection == ORTHOGONAL_PROJECTION)
-		data->header_panel.texts[1].text = "Projection orthogonale";
-	else if (data->render.projection == ISOMETRIC_PROJECTION)
-		data->header_panel.texts[1].text = "Projection isometrique";
-	else if (data->render.projection == CONIC_PROJECTION)
-		data->header_panel.texts[1].text = "Projection conique";
-	data->header_panel.texts[1].offset_x = (data->window.size_x - 6
-			* ft_strlen(data->header_panel.texts[1].text)) / 2;
-}
+
 
 // TO ADD
-//ft_write_infos(data, &data->left_panel_1);
 //ft_write_infos(data, &data->left_panel_2);
 //ft_write_infos(data, &data->right_panel);
 void	ft_write_hud_infos(t_data *data)
 {
-	ft_set_dynamic_infos(data);
+	ft_set_header_panel_dynamic_texts(data, &data->header_panel);
 	ft_write_infos(data, &data->header_panel);
+	ft_set_left_panel_1_dynamic_texts(data, &data->left_panel_1);
+	ft_write_infos(data, &data->left_panel_1);
 }
 
 void	ft_write_infos(t_data *data, t_panel_hud *panel)
