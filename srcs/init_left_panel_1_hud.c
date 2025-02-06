@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:02:18 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 16:43:04 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:40:27 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_init_left_panel_1(t_data *data, t_panel_hud *left_panel_1)
 void	ft_set_left_panel_1_display(t_data *data, t_panel_hud *left_panel_1)
 {
 	left_panel_1->size_x = 200;
-	left_panel_1->size_y = (data->left_panel_1.texts_count + 1)
+	left_panel_1->size_y = (left_panel_1->texts_count + 1)
 		* HUD_TEXT_HEIGHT;
 	left_panel_1->offset_x = 0;
 	left_panel_1->offset_y = (data->header_panel.texts_count + 1)
@@ -56,7 +56,8 @@ void	ft_set_left_panel_1_texts(t_panel_hud *left_panel_1)
 	ft_set_panel_texts_color(left_panel_1, ft_rgb_to_color(255, 255, 255), 0);
 }
 
-void	ft_set_left_panel_1_dynamic_texts(t_data *data, t_panel_hud *left_panel_1)
+void	ft_set_left_panel_1_dynamic_texts(t_data *data,
+	t_panel_hud *left_panel_1)
 {
 	if (data->render.projection == ORTHOGONAL_PROJECTION)
 	{

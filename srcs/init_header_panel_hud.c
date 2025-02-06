@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:00:49 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 16:36:21 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:39:38 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	ft_set_header_panel_texts(t_data *data, t_panel_hud *header_panel)
 	header_panel->texts[1].color = ft_rgb_to_color(255, 255, 255);
 }
 
-void	ft_set_header_panel_dynamic_texts(t_data *data, t_panel_hud *header_panel)
+void	ft_set_header_panel_dynamic_texts(t_data *data,
+	t_panel_hud *header_panel)
 {
 	if (data->render.projection == ORTHOGONAL_PROJECTION)
 		header_panel->texts[1].text = "Projection orthogonale";

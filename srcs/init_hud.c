@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:53:11 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 16:32:08 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:24:50 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,10 @@ int	ft_init_hud(t_data *data)
 		return (0);
 	if (!ft_init_left_panel_1(data, &data->left_panel_1))
 		return (0);
-	//if (!ft_init_left_panel_2(data, data->left_panel_2))
-	//	return (0);
-	//if (!ft_init_right_panel(data, data->right_panel))
+	if (!ft_init_left_panel_2(data, &data->left_panel_2))
+		return (0);
+	//if (!ft_init_right_panel(data, &data->right_panel))
 	//	return (0);
 	data->hud_height = data->header_panel.size_y + data->left_panel_1.size_y;
-	//+ data->left_panel_2.size_y
-		//+ data->right_panel.size_y;
 	return (1);
 }
