@@ -31,14 +31,19 @@ FDF_SRCS_FILES = \
 		allocate_and_free_pixels.c \
 		allocate_and_free_points.c \
 		apply_params_to_pixels.c \
-		debug.c \
 		destroy_and_free.c \
 		draw_hud.c \
 		draw_map.c \
 		error_msg.c \
 		fdf.c \
+		handle_keys_utils.c \
 		handle_keys.c \
+		init_header_panel_hud.c \
+		init_hud.c \
+		init_left_panel_1_hud.c \
+		init_left_panel_2_hud.c \
 		init_map.c \
+		init_right_panel_hud.c \
 		init.c \
 		mlx_init.c \
 		mlx_utils.c \

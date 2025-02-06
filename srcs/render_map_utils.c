@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   render_map_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:05:24 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/05 19:36:35 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/06 11:15:16 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 void	ft_center_map(t_data *data)
-{	
+{
 	if (data->render.projection == ORTHOGONAL_PROJECTION)
 	{
 		data->render.offset_x = (data->window.size_x
@@ -30,7 +30,6 @@ void	ft_center_map(t_data *data)
 	}
 	data->render.offset_y += data->hud_height;
 }
-
 
 void	ft_render_isometric_projection(t_point point,
 	t_pixel *pixel, t_render render)
@@ -58,4 +57,3 @@ void	ft_set_pixels_color(t_data *data, int color)
 		row_count++;
 	}
 }
-

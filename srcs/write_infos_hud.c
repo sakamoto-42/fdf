@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   write_infos_hud.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:52:26 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/05 20:35:27 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/06 11:14:46 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,18 @@ void	ft_set_dynamic_infos(t_data *data)
 		data->header_panel.texts[1].text = "Projection isometrique";
 	else if (data->render.projection == CONIC_PROJECTION)
 		data->header_panel.texts[1].text = "Projection conique";
-	data->header_panel.texts[1].offset_x = (data->window.size_x - 6 * ft_strlen(data->header_panel.texts[1].text)) / 2;
+	data->header_panel.texts[1].offset_x = (data->window.size_x - 6
+			* ft_strlen(data->header_panel.texts[1].text)) / 2;
 }
 
+// TO ADD
+//ft_write_infos(data, &data->left_panel_1);
+//ft_write_infos(data, &data->left_panel_2);
+//ft_write_infos(data, &data->right_panel);
 void	ft_write_hud_infos(t_data *data)
 {
 	ft_set_dynamic_infos(data);
 	ft_write_infos(data, &data->header_panel);
-	//ft_write_infos(data, &data->left_panel_1);
-	//ft_write_infos(data, &data->left_panel_2);
-	//ft_write_infos(data, &data->right_panel);
 }
 
 void	ft_write_infos(t_data *data, t_panel_hud *panel)
@@ -39,7 +41,11 @@ void	ft_write_infos(t_data *data, t_panel_hud *panel)
 	i = 0;
 	while (i < panel->texts_count)
 	{
-		mlx_string_put(data->mlx_ptr, data->window.win_ptr, panel->texts[i].offset_x, panel->texts[i].offset_y, panel->texts[i].color, panel->texts[i].text);
+		mlx_string_put(data->mlx_ptr,
+			data->window.win_ptr, panel->texts[i].offset_x,
+			panel->texts[i].offset_y,
+			panel->texts[i].color,
+			panel->texts[i].text);
 		i++;
 	}
 }
@@ -62,7 +68,8 @@ void	ft_write_infos_hud(t_data *data)
 	if (data->render.projection == ISOMETRIC_PROJECTION)
 	{
 		offset_y = 40;
-		ft_draw_commands_isometric_hud(data, "COMMANDS FOR ISOMETRIC PROJECTION :", offset_y);
+		ft_draw_commands_isometric_hud(data,
+			"COMMANDS FOR ISOMETRIC PROJECTION :", offset_y);
 		offset_y += 40;
 		ft_draw_commands_isometric_hud(data, "Decrease x angle : Q", offset_y);
 		offset_y += 20;

@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:45:29 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/05 23:21:07 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/06 11:31:14 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	ft_handle_close(t_data *data)
+{
+	ft_destroy_and_free_all(data);
+	exit(0);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
