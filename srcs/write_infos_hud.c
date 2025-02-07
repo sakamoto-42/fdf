@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:52:26 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/07 12:17:50 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:42:53 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void	ft_write_hud_infos(t_data *data)
 	ft_write_infos(data, &data->left_panel_1);
 	if (data->render.projection == ISOMETRIC_PROJECTION)
 		ft_write_infos(data, &data->left_panel_2);
-	ft_set_right_panel_dynamic_texts(data, &data->right_panel);
-	ft_write_infos(data, &data->right_panel);
+	ft_set_right_panel_2_dynamic_texts(data, &data->right_panel_2);
+	ft_write_infos(data, &data->right_panel_1);
+	ft_write_infos(data, &data->right_panel_2);
 }
 
 void	ft_write_infos(t_data *data, t_panel_hud *panel)

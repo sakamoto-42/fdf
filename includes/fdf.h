@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/07 13:25:15 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:59:36 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,8 @@ typedef struct s_data
 	t_panel_hud		header_panel;
 	t_panel_hud		left_panel_1;
 	t_panel_hud		left_panel_2;
-	t_panel_hud		right_panel;
+	t_panel_hud		right_panel_1;
+	t_panel_hud		right_panel_2;
 	t_map			map;
 	t_render		render;
 }		t_data;
@@ -237,11 +238,41 @@ void		ft_set_left_panel_2_display(t_data *data,
 				t_panel_hud *left_panel_2);
 void		ft_set_left_panel_2_texts(t_panel_hud *left_panel_2);
 
-int			ft_init_right_panel(t_data *data, t_panel_hud *right_panel);
-void		ft_set_right_panel_display(t_data *data, t_panel_hud *right_panel);
-void		ft_set_right_panel_texts(t_panel_hud *right_panel);
-void		ft_set_right_panel_dynamic_texts(t_data *data, t_panel_hud *right_panel);
-
+int			ft_init_right_panel_1(t_data *data, t_panel_hud *right_panel_1);
+void		ft_set_right_panel_1_display(t_data *data,
+				t_panel_hud *right_panel_1);
+void		ft_set_right_panel_1_texts(t_data *data, t_panel_hud *right_panel_1);
+void		ft_set_right_panel_1_map_width(t_data *data,
+	t_panel_hud *right_panel_1);
+void		ft_set_right_panel_1_map_height(t_data *data,
+	t_panel_hud *right_panel_1);
+void		ft_set_right_panel_1_total_points(t_data *data,
+	t_panel_hud *right_panel_1);
+	void		ft_set_right_panel_1_min_z(t_data *data,
+	t_panel_hud *right_panel_1);
+	void		ft_set_right_panel_1_max_z(t_data *data,
+	t_panel_hud *right_panel_1);
+int	ft_get_min_z(t_map *map);
+int	ft_get_max_z(t_map *map);
+int			ft_init_right_panel_2(t_data *data, t_panel_hud *right_panel_2);
+void		ft_set_right_panel_2_display(t_data *data, t_panel_hud *right_panel_2);
+void		ft_set_right_panel_2_texts(t_panel_hud *right_panel_2);
+void		ft_set_right_panel_2_dynamic_texts(t_data *data, t_panel_hud *right_panel_2);
+int			ft_radians_to_degrees(double angle);
+void		ft_set_right_panel_2_offset_x(t_data *data,
+	t_panel_hud *right_panel_2);
+void		ft_set_right_panel_2_offset_y(t_data *data,
+	t_panel_hud *right_panel_2);
+void		ft_set_right_panel_2_scale(t_data *data,
+	t_panel_hud *right_panel_2);
+void		ft_set_right_panel_2_angle_x(t_data *data,
+	t_panel_hud *right_panel_2);
+void		ft_set_right_panel_2_angle_y(t_data *data,
+	t_panel_hud *right_panel_2);
+void	ft_set_right_panel_2_angle_z(t_data *data,
+	t_panel_hud *right_panel_2);
+void	ft_set_right_panel_2_scale_z(t_data *data,
+	t_panel_hud *right_panel_2);
 void		ft_draw_hud(t_data *data);
 void		ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud);
 void		ft_write_hud_infos(t_data *data);

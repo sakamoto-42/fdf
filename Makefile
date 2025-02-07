@@ -43,7 +43,8 @@ FDF_SRCS_FILES = \
 		init_left_panel_1_hud.c \
 		init_left_panel_2_hud.c \
 		init_map.c \
-		init_right_panel_hud.c \
+		init_right_panel_1_hud.c \
+		init_right_panel_2_hud.c \
 		init.c \
 		mlx_init.c \
 		mlx_utils.c \
@@ -51,7 +52,11 @@ FDF_SRCS_FILES = \
 		render_map.c \
 		set_pixels.c \
 		set_points.c \
+		set_right_panel_1_datas.c \
+		set_right_panel_2_datas.c \
+		set_right_panel_2_datas_2.c \
 		update_image.c \
+		utils.c \
 		write_infos_hud.c \
 
 FDF_OBJS = $(addprefix $(FDF_OBJS_DIR)/, $(FDF_SRCS_FILES:.c=.o))

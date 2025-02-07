@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:10:42 by julien            #+#    #+#             */
-/*   Updated: 2025/02/07 12:57:35 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:09:14 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_set_left_panel_2_texts(t_panel_hud *left_panel_2)
 	left_panel_2->texts[3].text = "Decrease y angle : A";
 	left_panel_2->texts[4].text = "Increase y angle : D";
 	left_panel_2->texts[5].text = "Decrease z angle : W";
-	left_panel_2->texts[6].text = "Decrease z angle : W";
+	left_panel_2->texts[6].text = "Increase z angle : S";
 	left_panel_2->texts[7].text = "Decrease z scale : [";
 	left_panel_2->texts[8].text = "Increase z scale : ]";
 	ft_set_panel_texts_offset_x(left_panel_2, left_panel_2->offset_x
