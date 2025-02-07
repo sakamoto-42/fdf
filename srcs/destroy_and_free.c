@@ -3,28 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_and_free.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:21:41 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 11:15:41 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/07 12:54:51 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// TO ADD
-/*
+void	ft_free_hud_panels(t_data *data)
+{
+	if (data->header_panel.texts)
+		free(data->header_panel.texts);
 	if (data->left_panel_1.texts)
 		free(data->left_panel_1.texts);
 	if (data->left_panel_2.texts)
 		free(data->left_panel_2.texts);
 	if (data->right_panel.texts)
+	{
+		int i = 1;
+		//while (i < data->right_panel.texts_count)
+		while (i <= 1)
+		{
+			free(data->right_panel.texts[i].text);
+			i++;
+		}
 		free(data->right_panel.texts);
-*/
-void	ft_free_hud_panels(t_data *data)
-{
-	if (data->header_panel.texts)
-		free(data->header_panel.texts);
+	}
+		
 }
 
 void	ft_destroy_and_free_all(t_data *data)

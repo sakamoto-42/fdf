@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:02:18 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 17:40:27 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:54:29 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_set_left_panel_1_display(t_data *data, t_panel_hud *left_panel_1)
 void	ft_set_left_panel_1_texts(t_panel_hud *left_panel_1)
 {
 	left_panel_1->texts[0].text = "COMMANDS :";
-	left_panel_1->texts[0].offset_x = (left_panel_1->size_x - 6
+	left_panel_1->texts[0].offset_x = left_panel_1->offset_x + (left_panel_1->size_x - 6
 			* ft_strlen(left_panel_1->texts[0].text)) / 2;
 	left_panel_1->texts[1].text = "Exit : ESCAPE";
 	left_panel_1->texts[2].text = "Move up : UP ARROW";
@@ -52,7 +52,7 @@ void	ft_set_left_panel_1_texts(t_panel_hud *left_panel_1)
 	left_panel_1->texts[10].text = "Mirror mode : M";
 	left_panel_1->texts[11].text = "Zoom in : +";
 	left_panel_1->texts[12].text = "Zoom out : -";
-	ft_set_panel_texts_offset_x(left_panel_1, HUD_TEXT_OFFSET_X, 1);
+	ft_set_panel_texts_offset_x(left_panel_1, left_panel_1->offset_x + HUD_TEXT_OFFSET_X, 1);
 	ft_set_panel_texts_color(left_panel_1, ft_rgb_to_color(255, 255, 255), 0);
 }
 

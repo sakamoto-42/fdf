@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:53:11 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 17:24:50 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:37:26 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_set_panel_texts_color(t_panel_hud *panel, int color, int start)
 
 int	ft_allocate_panel_texts(t_panel_hud *panel)
 {
-	panel->texts = ft_calloc(panel->texts_count, sizeof(t_text_hud));
+	panel->texts = (t_text_hud *)ft_calloc(panel->texts_count, sizeof(t_text_hud));
 	if (!panel->texts)
 		return (0);
 	return (1);
@@ -64,8 +64,8 @@ int	ft_init_hud(t_data *data)
 		return (0);
 	if (!ft_init_left_panel_2(data, &data->left_panel_2))
 		return (0);
-	//if (!ft_init_right_panel(data, &data->right_panel))
-	//	return (0);
+	if (!ft_init_right_panel(data, &data->right_panel))
+		return (0);
 	data->hud_height = data->header_panel.size_y + data->left_panel_1.size_y;
 	return (1);
 }

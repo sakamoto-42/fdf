@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/06 17:41:51 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:54:47 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,10 +236,13 @@ void		ft_set_left_panel_1_dynamic_texts(t_data *data, t_panel_hud *left_panel_1)
 int			ft_init_left_panel_2(t_data *data, t_panel_hud *left_panel_2);
 void		ft_set_left_panel_2_display(t_data *data,
 				t_panel_hud *left_panel_2);
-void		ft_set_left_panel_2_texts(t_data *data, t_panel_hud *left_panel_2);
+void		ft_set_left_panel_2_texts(t_panel_hud *left_panel_2);
+
 int			ft_init_right_panel(t_data *data, t_panel_hud *right_panel);
 void		ft_set_right_panel_display(t_data *data, t_panel_hud *right_panel);
-void		ft_set_right_panel_texts(t_data *data, t_panel_hud *right_panel);
+void		ft_set_right_panel_texts(t_panel_hud *right_panel);
+void		ft_set_right_panel_dynamic_texts(t_data *data, t_panel_hud *right_panel);
+
 void		ft_draw_hud(t_data *data);
 void		ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud);
 void		ft_write_hud_infos(t_data *data);

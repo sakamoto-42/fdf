@@ -6,20 +6,19 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:50:27 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/06 17:37:45 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:31:03 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// TO ADD
-//ft_draw_panel_hud(data, data->right_panel);
 void	ft_draw_hud(t_data *data)
 {
 	ft_draw_panel_hud(data, data->header_panel);
 	ft_draw_panel_hud(data, data->left_panel_1);
 	if (data->render.projection == ISOMETRIC_PROJECTION)
 		ft_draw_panel_hud(data, data->left_panel_2);
+	ft_draw_panel_hud(data, data->right_panel);
 }
 
 void	ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud)
