@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/07 15:59:36 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:33:23 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define TRANSLATION_STEP 20
 # define SCALE_Z_STEP 1
-# define ANGLE_X_STEP M_PI / 60
+# define ANGLE_X_STEP 0.1
 # define ANGLE_Y_STEP 0.1
 # define ANGLE_Z_STEP 0.1
 # define ZOOM_STEP 1
@@ -68,6 +68,7 @@
 # define KEY_MOVE_DOWN 65364
 # define KEY_MOVE_LEFT 65361
 # define KEY_MOVE_RIGHT 65363
+# define KEY_CHANGE_COLOR 118
 
 typedef struct s_window
 {
@@ -133,6 +134,7 @@ typedef struct s_render
 	int					offset_x;
 	int					offset_y;
 	t_render_isometric	render_isometric;
+	int					color;
 }		t_render;
 
 typedef struct s_map
@@ -176,6 +178,7 @@ typedef struct s_data
 	t_panel_hud		right_panel_2;
 	t_map			map;
 	t_render		render;
+	int				*colors;
 }		t_data;
 
 char		*ft_strerror(int errnum);
@@ -277,5 +280,8 @@ void		ft_draw_hud(t_data *data);
 void		ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud);
 void		ft_write_hud_infos(t_data *data);
 void		ft_write_infos(t_data *data, t_panel_hud *panel);
+
+int			ft_init_color_sets(t_data *data);
+void		ft_change_color(t_data *data);
 
 #endif

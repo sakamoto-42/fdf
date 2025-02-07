@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:30:33 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 16:42:30 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:38:48 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,14 @@ void	ft_handle_keys_common(t_data *data, int keycode)
 		data->render.scale = data->render.scale + ZOOM_STEP;
 	if (keycode == KEY_ZOOM_OUT)
 		data->render.scale = data->render.scale - ZOOM_STEP;
+}
+
+void	ft_change_color(t_data *data)
+{
+	static int color_index = 1;
+
+	if (color_index >= 7)
+		color_index = 0;
+	data->render.color = data->colors[color_index];
+	color_index++;
 }

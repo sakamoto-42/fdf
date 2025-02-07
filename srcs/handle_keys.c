@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:18:25 by julien            #+#    #+#             */
-/*   Updated: 2025/02/06 11:35:24 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/07 17:08:50 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	ft_handle_keys(int keycode, t_data *data)
 		ft_handle_keys_common(data, keycode);
 	if (data->render.projection == ISOMETRIC_PROJECTION)
 		ft_handle_keys_isometric_projection(data, keycode);
+	if (keycode == KEY_CHANGE_COLOR)
+		ft_change_color(data);
 	ft_update_image(data);
 	return (0);
 }

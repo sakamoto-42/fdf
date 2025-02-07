@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:37:52 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/03 11:06:02 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:34:27 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_init_pixels(t_data *data)
 {
 	ft_points_to_pixels(data);
-	ft_set_pixels_color(data, ft_rgb_to_color(0, 255, 0));
+	ft_set_pixels_color(data, data->render.color);
 }
 
 void	ft_points_to_pixels(t_data *data)
