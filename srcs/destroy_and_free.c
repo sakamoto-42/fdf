@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:21:41 by julien            #+#    #+#             */
-/*   Updated: 2025/02/07 12:54:51 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:26:26 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_free_hud_panels(t_data *data)
 	{
 		int i = 1;
 		//while (i < data->right_panel.texts_count)
-		while (i <= 1)
+		while (i < data->right_panel.texts_count)
 		{
 			free(data->right_panel.texts[i].text);
 			i++;

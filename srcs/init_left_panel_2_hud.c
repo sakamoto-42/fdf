@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:10:42 by julien            #+#    #+#             */
-/*   Updated: 2025/02/07 10:49:47 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:57:35 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_init_left_panel_2(t_data *data, t_panel_hud *left_panel_2)
 	if (!ft_allocate_panel_texts(left_panel_2))
 		return (0);
 	ft_set_panel_texts_offset_y(left_panel_2,
-		(data->header_panel.texts_count + 1) * HUD_TEXT_HEIGHT, 0);
+		(data->header_panel.texts_count + 1) * HUD_TEXT_HEIGHT);
 	ft_set_left_panel_2_display(data, left_panel_2);
 	ft_set_left_panel_2_texts(left_panel_2);
 	return (1);

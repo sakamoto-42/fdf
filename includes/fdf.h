@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/07 10:54:47 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:25:15 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define TRANSLATION_STEP 20
 # define SCALE_Z_STEP 1
-# define ANGLE_X_STEP 0.1
+# define ANGLE_X_STEP M_PI / 60
 # define ANGLE_Y_STEP 0.1
 # define ANGLE_Z_STEP 0.1
 # define ZOOM_STEP 1
@@ -123,7 +123,6 @@ typedef struct s_isometric
 	double	angle_y;
 	double	angle_z;
 	int		scale_z;
-	int		offset_z;
 
 }		t_render_isometric;
 

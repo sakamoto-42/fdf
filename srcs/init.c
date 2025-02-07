@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/06 11:58:50 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/07 13:25:56 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ft_init_default_settings(t_data *data)
 	data->render.projection = ISOMETRIC_PROJECTION;
 	data->render.scale = 20;
 	data->render.render_isometric.angle_x = M_PI / 6;
+	data->render.render_isometric.angle_y = 0;
+	data->render.render_isometric.angle_z = 0;
 	data->render.render_isometric.scale_z = 5;
 }
 
