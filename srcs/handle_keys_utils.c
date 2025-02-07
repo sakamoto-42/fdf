@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:30:33 by julien            #+#    #+#             */
-/*   Updated: 2025/02/07 17:38:48 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:44:09 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_handle_keys_common(t_data *data, int keycode)
 
 void	ft_change_color(t_data *data)
 {
-	static int color_index = 1;
+	static int	color_index = 1;
 
 	if (color_index >= 7)
 		color_index = 0;
