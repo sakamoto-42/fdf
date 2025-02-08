@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:58:17 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/08 16:37:48 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:24:25 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int	ft_rgb_to_color(t_data *data, int r, int g, int b)
 {
-	return ((unsigned int)(mlx_get_color_value(data->mlx_ptr, (r << 16) | (g << 8) | b)));
-	//return ((r << 16) | (g << 8) | b);
+	return ((unsigned int)(mlx_get_color_value(data->mlx_ptr,
+			(r << 16) | (g << 8) | b)));
 }
 
-void	ft_mlx_pixel_put(t_data *data, t_pixel pixel, unsigned int color, int mode)
+void	ft_mlx_pixel_put(t_data *data,
+	t_pixel pixel, unsigned int color, int mode)
 {
 	char	*dst;
 	int		y_limit_min;

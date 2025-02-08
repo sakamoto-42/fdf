@@ -36,6 +36,7 @@ FDF_SRCS_FILES = \
 		draw_map.c \
 		error_msg.c \
 		fdf.c \
+		gradient.c \
 		handle_keys_utils.c \
 		handle_keys.c \
 		init_color_sets.c \

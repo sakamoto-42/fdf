@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:36:48 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/08 16:31:34 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:21:54 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,30 @@ static void	ft_set_bres_sx_sy(t_bresenham *bres, t_line line)
 		bres->sy = -1;
 }
 
-int	ft_get_gradient_color(t_data *data, int step, int min_step, int max_step, unsigned int color_1, unsigned int color_2)
+void	ft_update_bres(t_bresenham *bres, t_pixel *pixel)
 {
-	double	ratio;
-	int	r;
-	int	g;
-	int	b;
-	unsigned int color;
-
-	if (max_step == min_step)
-		return (color_1);
-	ratio = (double)(step - min_step) / (max_step - min_step);
-	r = (int)(((color_1 >> 16) & 0xFF) + ratio * (((color_2 >> 16) & 0xFF) - ((color_1 >> 16) & 0xFF)));
-	g = (int)(((color_1 >> 8) & 0xFF) + ratio * (((color_2 >> 8) & 0xFF) - ((color_1 >> 8) & 0xFF)));
-	b = (int)((color_1 & 0xFF) + ratio * ((color_2 & 0xFF) - (color_1 & 0xFF)));
-	color = ft_rgb_to_color(data, r, g, b);
-	return (color);
+	if (bres->e2 > -bres->dy)
+	{
+		bres->err -= bres->dy;
+		pixel->x += bres->sx;
+	}
+	if (bres->e2 < bres->dx)
+	{
+		bres->err += bres->dx;
+		pixel->y += bres->sy;
+	}
 }
 
 void	ft_draw_line(t_data *data, t_line line)
 {
 	t_bresenham				bres;
+	t_gradient				gradient;
 	int						steps;
 	int						step_count;
 	unsigned int			color;
 
-	steps = ft_abs(line.pixel_2.x - line.pixel_1.x) + ft_abs(line.pixel_2.y - line.pixel_1.y);
+	steps = ft_abs(line.pixel_2.x - line.pixel_1.x)
+		+ ft_abs(line.pixel_2.y - line.pixel_1.y);
 	step_count = 0;
 	bres.dx = ft_abs(line.pixel_2.x - line.pixel_1.x);
 	bres.dy = ft_abs(line.pixel_2.y - line.pixel_1.y);
@@ -58,20 +56,12 @@ void	ft_draw_line(t_data *data, t_line line)
 	while (!(line.pixel_1.x == line.pixel_2.x
 			&& line.pixel_1.y == line.pixel_2.y))
 	{
-		color = ft_get_gradient_color(data, step_count, 0, steps, line.pixel_1.color, line.pixel_2.color);
+		ft_set_gradient_values(&gradient, step_count, steps, line);
+		color = ft_get_gradient_color(data, gradient);
 		ft_mlx_pixel_put(data, line.pixel_1, color, MAP);
 		step_count++;
 		bres.e2 = bres.err * 2;
-		if (bres.e2 > -bres.dy)
-		{
-			bres.err -= bres.dy;
-			line.pixel_1.x += bres.sx;
-		}
-		if (bres.e2 < bres.dx)
-		{
-			bres.err += bres.dx;
-			line.pixel_1.y += bres.sy;
-		}
+		ft_update_bres(&bres, &line.pixel_1);
 	}
 	ft_mlx_pixel_put(data, line.pixel_1, line.pixel_2.color, MAP);
 }

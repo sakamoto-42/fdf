@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:53:11 by julien            #+#    #+#             */
-/*   Updated: 2025/02/08 16:30:00 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:23:31 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	ft_set_panel_texts_offset_x(t_panel_hud *panel, int offset_x, int start)
 	}
 }
 
-void	ft_set_panel_texts_color(t_panel_hud *panel, unsigned int color, int start)
+void	ft_set_panel_texts_color(t_panel_hud *panel,
+	unsigned int color, int start)
 {
 	int	i;
 

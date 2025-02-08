@@ -6,13 +6,13 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 16:51:36 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/08 16:32:55 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:25:22 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_get_opposite_color(t_data *data, unsigned int color)
+unsigned int	ft_get_opposite_color(t_data *data, unsigned int color)
 {
 	int	r;
 	int	g;
@@ -49,11 +49,13 @@ int	ft_init_color_sets(t_data *data)
 	return (1);
 }
 
-int	ft_init_opposite_color_sets(t_data *data, unsigned int *colors, int nb_color_sets)
+int	ft_init_opposite_color_sets(t_data *data,
+	unsigned int *colors, int nb_color_sets)
 {
 	int	i;
 
-	data->opposite_colors = (unsigned int *)ft_calloc(nb_color_sets, sizeof(int));
+	data->opposite_colors = (unsigned int *)ft_calloc(nb_color_sets,
+			sizeof(unsigned int));
 	if (!data->opposite_colors)
 		return (0);
 	i = 0;
