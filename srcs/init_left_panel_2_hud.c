@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:10:42 by julien            #+#    #+#             */
-/*   Updated: 2025/02/07 16:09:14 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 16:36:28 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_init_left_panel_2(t_data *data, t_panel_hud *left_panel_2)
 	ft_set_panel_texts_offset_y(left_panel_2,
 		(data->header_panel.texts_count + 1) * HUD_TEXT_HEIGHT);
 	ft_set_left_panel_2_display(data, left_panel_2);
-	ft_set_left_panel_2_texts(left_panel_2);
+	ft_set_left_panel_2_texts(data, left_panel_2);
 	return (1);
 }
 
@@ -32,10 +32,10 @@ void	ft_set_left_panel_2_display(t_data *data, t_panel_hud *left_panel_2)
 	left_panel_2->offset_x = 200;
 	left_panel_2->offset_y = (data->header_panel.texts_count + 1)
 		* HUD_TEXT_HEIGHT;
-	left_panel_2->color = ft_rgb_to_color(255, 0, 0);
+	left_panel_2->color = ft_rgb_to_color(data, 255, 0, 0);
 }
 
-void	ft_set_left_panel_2_texts(t_panel_hud *left_panel_2)
+void	ft_set_left_panel_2_texts(t_data *data, t_panel_hud *left_panel_2)
 {
 	left_panel_2->texts[0].text = "ISOMETRIC PROJECTION COMMANDS :";
 	left_panel_2->texts[0].offset_x = left_panel_2->offset_x
@@ -52,5 +52,5 @@ void	ft_set_left_panel_2_texts(t_panel_hud *left_panel_2)
 	ft_set_panel_texts_offset_x(left_panel_2, left_panel_2->offset_x
 		+ HUD_TEXT_OFFSET_X, 1);
 	ft_set_panel_texts_color(left_panel_2,
-		ft_rgb_to_color(255, 255, 255), 0);
+		ft_rgb_to_color(data, 255, 255, 255), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:48:11 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/07 16:20:24 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 16:34:07 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_set_right_panel_1_display(t_data *data, t_panel_hud *right_panel_1)
 		- data->right_panel_1.size_x;
 	right_panel_1->offset_y = (data->header_panel.texts_count + 1)
 		* HUD_TEXT_HEIGHT;
-	right_panel_1->color = ft_rgb_to_color(255, 0, 0);
+	right_panel_1->color = ft_rgb_to_color(data, 255, 0, 0);
 }
 
 void	ft_set_right_panel_1_texts(t_data *data, t_panel_hud *right_panel_1)
@@ -50,5 +50,5 @@ void	ft_set_right_panel_1_texts(t_data *data, t_panel_hud *right_panel_1)
 	ft_set_panel_texts_offset_x(right_panel_1, right_panel_1->offset_x
 		+ HUD_TEXT_OFFSET_X, 1);
 	ft_set_panel_texts_color(right_panel_1,
-		ft_rgb_to_color(255, 255, 255), 0);
+		ft_rgb_to_color(data, 255, 255, 255), 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:05:24 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/06 11:15:16 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/08 16:38:11 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_render_isometric_projection(t_point point,
 		render.render_isometric.scale_z);
 }
 
-void	ft_set_pixels_color(t_data *data, int color)
+void	ft_set_pixels_color(t_data *data, unsigned int color)
 {
 	int	row_count;
 	int	col_count;
@@ -50,8 +50,7 @@ void	ft_set_pixels_color(t_data *data, int color)
 		col_count = 0;
 		while (col_count < data->map.cols)
 		{
-			data->pixels[row_count][col_count].color
-				= (unsigned int)(mlx_get_color_value(data->mlx_ptr, color));
+			data->pixels[row_count][col_count].color = color;
 			col_count++;
 		}
 		row_count++;

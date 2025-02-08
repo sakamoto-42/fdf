@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:02:18 by julien            #+#    #+#             */
-/*   Updated: 2025/02/08 14:56:37 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 16:34:49 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_init_left_panel_1(t_data *data, t_panel_hud *left_panel_1)
 	ft_set_panel_texts_offset_y(left_panel_1,
 		(data->header_panel.texts_count + 1) * HUD_TEXT_HEIGHT);
 	ft_set_left_panel_1_display(data, left_panel_1);
-	ft_set_left_panel_1_texts(left_panel_1);
+	ft_set_left_panel_1_texts(data, left_panel_1);
 	return (1);
 }
 
@@ -32,10 +32,10 @@ void	ft_set_left_panel_1_display(t_data *data, t_panel_hud *left_panel_1)
 	left_panel_1->offset_x = 0;
 	left_panel_1->offset_y = (data->header_panel.texts_count + 1)
 		* HUD_TEXT_HEIGHT;
-	left_panel_1->color = ft_rgb_to_color(255, 0, 0);
+	left_panel_1->color = ft_rgb_to_color(data, 255, 0, 0);
 }
 
-void	ft_set_left_panel_1_texts(t_panel_hud *left_panel_1)
+void	ft_set_left_panel_1_texts(t_data *data, t_panel_hud *left_panel_1)
 {
 	left_panel_1->texts[0].text = "COMMANDS :";
 	left_panel_1->texts[0].offset_x = left_panel_1->offset_x
@@ -56,7 +56,7 @@ void	ft_set_left_panel_1_texts(t_panel_hud *left_panel_1)
 	left_panel_1->texts[13].text = "Change color : V";
 	ft_set_panel_texts_offset_x(left_panel_1, left_panel_1->offset_x
 		+ HUD_TEXT_OFFSET_X, 1);
-	ft_set_panel_texts_color(left_panel_1, ft_rgb_to_color(255, 255, 255), 0);
+	ft_set_panel_texts_color(left_panel_1, ft_rgb_to_color(data, 255, 255, 255), 0);
 }
 
 void	ft_set_left_panel_1_dynamic_texts(t_data *data,

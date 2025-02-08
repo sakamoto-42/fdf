@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/08 14:58:04 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 16:36:09 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,8 @@ typedef struct s_render
 	int					offset_x;
 	int					offset_y;
 	t_render_isometric	render_isometric;
-	int					color;
-	int					opposite_color;
+	unsigned int					color;
+	unsigned int					opposite_color;
 }		t_render;
 
 typedef struct s_map
@@ -152,7 +152,7 @@ typedef struct s_text_hud
 	char	*text;
 	int		offset_x;
 	int		offset_y;
-	int		color;
+	unsigned int		color;
 }		t_text_hud;
 
 typedef struct s_panel_hud
@@ -163,7 +163,7 @@ typedef struct s_panel_hud
 	int			size_y;
 	int			offset_x;
 	int			offset_y;
-	int			color;
+	unsigned int			color;
 }		t_panel_hud;
 
 typedef struct s_data
@@ -180,8 +180,8 @@ typedef struct s_data
 	t_panel_hud		right_panel_2;
 	t_map			map;
 	t_render		render;
-	int				*colors;
-	int				*opposite_colors;
+	unsigned int				*colors;
+	unsigned int				*opposite_colors;
 }		t_data;
 
 char		*ft_strerror(int errnum);
@@ -190,8 +190,8 @@ void		ft_init_default_settings(t_data *data);
 int			ft_init_map(t_data *data);
 int			ft_init_window(t_data *data);
 int			ft_init_image(t_data *data);
-int			ft_rgb_to_color(int r, int g, int b);
-void		ft_mlx_pixel_put(t_data *data, t_pixel pixel, int color, int mode);
+int			ft_rgb_to_color(t_data *data, int r, int g, int b);
+void		ft_mlx_pixel_put(t_data *data, t_pixel pixel, unsigned int color, int mode);
 int			ft_allocate_points(t_data *data);
 t_point		**ft_free_points_until(t_point **points, size_t n);
 t_pixel		**ft_free_points(t_data *data);
@@ -200,7 +200,7 @@ t_pixel		**ft_free_pixels_until(t_pixel **pixels, size_t n);
 t_pixel		**ft_free_pixels(t_data *data);
 int			ft_set_points(t_data *data);
 
-void		ft_set_pixels_color(t_data *data, int color);
+void		ft_set_pixels_color(t_data *data, unsigned int color);
 void		ft_points_to_pixels(t_data *data);
 int			ft_render_map(t_data *data);
 void		ft_render_isometric_projection(t_point point,
@@ -210,8 +210,7 @@ void		ft_free_hud_panels(t_data *data);
 void		ft_destroy_and_free_all(t_data *data);
 void		ft_draw_map(t_data *data);
 void		ft_draw_line(t_data *data, t_line line);
-void		ft_apply_color_to_pixel(t_data *data, t_pixel *pixel_1,
-				t_pixel *pixel_2);
+void	ft_apply_color_to_pixel(t_data *data, t_pixel *pixel);
 void		ft_apply_scale_to_pixel(t_point point, t_pixel *pixel, int scale);
 void		ft_apply_offset_to_pixel(t_pixel *pixel, t_render render);
 void		ft_apply_angle_x_to_pixel(t_pixel *pixel, t_render render);
@@ -231,7 +230,7 @@ int			ft_allocate_panel_texts(t_panel_hud *panel);
 void		ft_set_panel_texts_offset_x(t_panel_hud *panel,
 				int offset_x, int start);
 void		ft_set_panel_texts_offset_y(t_panel_hud *panel, int start);
-void		ft_set_panel_texts_color(t_panel_hud *panel, int color, int start);
+void		ft_set_panel_texts_color(t_panel_hud *panel, unsigned int color, int start);
 int			ft_init_header_panel(t_data *data, t_panel_hud *header_panel);
 void		ft_set_header_panel_display(t_data *data,
 				t_panel_hud *header_panel);
@@ -242,13 +241,13 @@ void		ft_set_header_panel_dynamic_texts(t_data *data,
 int			ft_init_left_panel_1(t_data *data, t_panel_hud *left_panel_1);
 void		ft_set_left_panel_1_display(t_data *data,
 				t_panel_hud *left_panel_1);
-void		ft_set_left_panel_1_texts(t_panel_hud *left_panel_1);
+void		ft_set_left_panel_1_texts(t_data *data, t_panel_hud *left_panel_1);
 void		ft_set_left_panel_1_dynamic_texts(t_data *data,
 				t_panel_hud *left_panel_1);
 int			ft_init_left_panel_2(t_data *data, t_panel_hud *left_panel_2);
 void		ft_set_left_panel_2_display(t_data *data,
 				t_panel_hud *left_panel_2);
-void		ft_set_left_panel_2_texts(t_panel_hud *left_panel_2);
+void		ft_set_left_panel_2_texts(t_data *data, t_panel_hud *left_panel_2);
 int			ft_init_right_panel_1(t_data *data, t_panel_hud *right_panel_1);
 void		ft_set_right_panel_1_display(t_data *data,
 				t_panel_hud *right_panel_1);
@@ -269,7 +268,7 @@ int			ft_get_max_z(t_map *map);
 int			ft_init_right_panel_2(t_data *data, t_panel_hud *right_panel_2);
 void		ft_set_right_panel_2_display(t_data *data,
 				t_panel_hud *right_panel_2);
-void		ft_set_right_panel_2_texts(t_panel_hud *right_panel_2);
+void		ft_set_right_panel_2_texts(t_data *data, t_panel_hud *right_panel_2);
 void		ft_set_right_panel_2_dynamic_texts(t_data *data,
 				t_panel_hud *right_panel_2);
 int			ft_radians_to_degrees(double angle);
@@ -293,8 +292,8 @@ void		ft_write_hud_infos(t_data *data);
 void		ft_write_infos(t_data *data, t_panel_hud *panel);
 int			ft_init_color_sets(t_data *data);
 int			ft_init_opposite_color_sets(t_data *data,
-				int *colors, int nb_color_sets);
+				unsigned int *colors, int nb_color_sets);
 void		ft_change_color(t_data *data);
-int			ft_get_opposite_color(int color);
+int			ft_get_opposite_color(t_data *data, unsigned int color);
 
 #endif

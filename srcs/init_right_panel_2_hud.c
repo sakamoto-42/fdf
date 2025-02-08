@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 16:17:21 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/07 16:17:54 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 16:36:42 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_init_right_panel_2(t_data *data, t_panel_hud *right_panel_2)
 	ft_set_panel_texts_offset_y(right_panel_2,
 		(data->header_panel.texts_count + 1) * HUD_TEXT_HEIGHT);
 	ft_set_right_panel_2_display(data, right_panel_2);
-	ft_set_right_panel_2_texts(right_panel_2);
+	ft_set_right_panel_2_texts(data, right_panel_2);
 	return (1);
 }
 
@@ -32,10 +32,10 @@ void	ft_set_right_panel_2_display(t_data *data, t_panel_hud *right_panel_2)
 	right_panel_2->offset_x = data->window.size_x - right_panel_2->size_x;
 	right_panel_2->offset_y = (data->header_panel.texts_count + 1)
 		* HUD_TEXT_HEIGHT;
-	right_panel_2->color = ft_rgb_to_color(255, 0, 0);
+	right_panel_2->color = ft_rgb_to_color(data, 255, 0, 0);
 }
 
-void	ft_set_right_panel_2_texts(t_panel_hud *right_panel_2)
+void	ft_set_right_panel_2_texts(t_data *data, t_panel_hud *right_panel_2)
 {
 	right_panel_2->texts[0].text = "TRANSFORMATIONS : ";
 	right_panel_2->texts[0].offset_x = right_panel_2->offset_x
@@ -43,7 +43,7 @@ void	ft_set_right_panel_2_texts(t_panel_hud *right_panel_2)
 			* ft_strlen(right_panel_2->texts[0].text)) / 2;
 	ft_set_panel_texts_offset_x(right_panel_2,
 		right_panel_2->offset_x + HUD_TEXT_OFFSET_X, 1);
-	ft_set_panel_texts_color(right_panel_2, ft_rgb_to_color(255, 255, 255), 0);
+	ft_set_panel_texts_color(right_panel_2, ft_rgb_to_color(data, 255, 255, 255), 0);
 }
 
 void	ft_set_right_panel_2_dynamic_texts(t_data *data,
