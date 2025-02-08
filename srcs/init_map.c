@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:15:28 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/05 21:51:02 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 23:16:25 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	ft_init_map(t_data *data)
 	int	status_code;
 
 	status_code = ft_set_map_cols_and_rows_number(data);
+	data->render.map_center_x = (data->map.cols - 1) / 2;
+	data->render.map_center_y = (data->map.rows - 1) / 2;
 	if (status_code != SUCCESS)
 		return (status_code);
 	status_code = ft_allocate_points(data);

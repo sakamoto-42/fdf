@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/08 22:23:07 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 23:07:36 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,8 @@ typedef struct s_render
 	t_render_isometric	render_isometric;
 	unsigned int		color;
 	unsigned int		opposite_color;
+	int					map_center_x;
+	int					map_center_y;
 }		t_render;
 
 typedef struct s_map

@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:05:24 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/08 23:01:14 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 23:24:24 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,21 @@
 
 void	ft_center_map(t_data *data)
 {
-	int	center_x;
-	int	center_y;
-
-	center_x = (data->map.cols - 1) / 2;
-	center_y = (data->map.rows - 1) / 2;
 	if (data->render.projection == ORTHOGONAL_PROJECTION)
 	{
 		data->render.offset_x = (data->window.size_x / 2)
-			- (center_x * data->render.scale);
+			- (data->render.map_center_x * data->render.scale);
 		data->render.offset_y = (data->window.size_y / 2)
-			- (center_y * data->render.scale);
+			- (data->render.map_center_y * data->render.scale);
 	}
 	else if (data->render.projection == ISOMETRIC_PROJECTION)
 	{
 		data->render.offset_x = (data->window.size_x / 2)
-			- ((center_x - center_y) * data->render.scale) * cos(M_PI / 6);
+			- ((data->render.map_center_x - data->render.map_center_y)
+				* data->render.scale) * cos(M_PI / 6);
 		data->render.offset_y = (data->window.size_y / 2)
-			- ((center_x + center_y) * data->render.scale * sin(M_PI / 6));
+			- ((data->render.map_center_x + data->render.map_center_y)
+				* data->render.scale * sin(M_PI / 6));
 	}
 }
 
