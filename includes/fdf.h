@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/07 17:43:43 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:58:04 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_pixel
 {
 	int				x;
 	int				y;
+	int				z;
 	unsigned int	color;
 }		t_pixel;
 
@@ -135,6 +136,7 @@ typedef struct s_render
 	int					offset_y;
 	t_render_isometric	render_isometric;
 	int					color;
+	int					opposite_color;
 }		t_render;
 
 typedef struct s_map
@@ -179,6 +181,7 @@ typedef struct s_data
 	t_map			map;
 	t_render		render;
 	int				*colors;
+	int				*opposite_colors;
 }		t_data;
 
 char		*ft_strerror(int errnum);
@@ -196,7 +199,7 @@ int			ft_allocate_pixels(t_data *data);
 t_pixel		**ft_free_pixels_until(t_pixel **pixels, size_t n);
 t_pixel		**ft_free_pixels(t_data *data);
 int			ft_set_points(t_data *data);
-void		ft_init_pixels(t_data *data);
+
 void		ft_set_pixels_color(t_data *data, int color);
 void		ft_points_to_pixels(t_data *data);
 int			ft_render_map(t_data *data);
@@ -207,6 +210,8 @@ void		ft_free_hud_panels(t_data *data);
 void		ft_destroy_and_free_all(t_data *data);
 void		ft_draw_map(t_data *data);
 void		ft_draw_line(t_data *data, t_line line);
+void		ft_apply_color_to_pixel(t_data *data, t_pixel *pixel_1,
+				t_pixel *pixel_2);
 void		ft_apply_scale_to_pixel(t_point point, t_pixel *pixel, int scale);
 void		ft_apply_offset_to_pixel(t_pixel *pixel, t_render render);
 void		ft_apply_angle_x_to_pixel(t_pixel *pixel, t_render render);
@@ -287,6 +292,9 @@ void		ft_draw_panel_hud(t_data *data, t_panel_hud panel_hud);
 void		ft_write_hud_infos(t_data *data);
 void		ft_write_infos(t_data *data, t_panel_hud *panel);
 int			ft_init_color_sets(t_data *data);
+int			ft_init_opposite_color_sets(t_data *data,
+				int *colors, int nb_color_sets);
 void		ft_change_color(t_data *data);
+int			ft_get_opposite_color(int color);
 
 #endif

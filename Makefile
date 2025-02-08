@@ -38,6 +38,7 @@ FDF_SRCS_FILES = \
 		fdf.c \
 		handle_keys_utils.c \
 		handle_keys.c \
+		init_color_sets.c \
 		init_header_panel_hud.c \
 		init_hud.c \
 		init_left_panel_1_hud.c \

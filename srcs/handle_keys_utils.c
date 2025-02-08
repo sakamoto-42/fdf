@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:30:33 by julien            #+#    #+#             */
-/*   Updated: 2025/02/07 17:44:09 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:37:39 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void	ft_change_color(t_data *data)
 	if (color_index >= 7)
 		color_index = 0;
 	data->render.color = data->colors[color_index];
+	data->render.opposite_color = data->opposite_colors[color_index];
 	color_index++;
 }

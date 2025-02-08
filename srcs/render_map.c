@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:30:14 by julien            #+#    #+#             */
-/*   Updated: 2025/02/05 22:15:25 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 10:16:11 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_render_map(t_data *data)
 	status_code = ft_init_image(data);
 	if (status_code != SUCCESS)
 		return (status_code);
-	ft_init_pixels(data);
+	ft_points_to_pixels(data);
 	ft_draw_hud(data);
 	ft_draw_map(data);
 	mlx_put_image_to_window(data->mlx_ptr,

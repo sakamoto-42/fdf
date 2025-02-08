@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:36:48 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/05 23:19:56 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:52:25 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_draw_line(t_data *data, t_line line)
 	while (!(line.pixel_1.x == line.pixel_2.x
 			&& line.pixel_1.y == line.pixel_2.y))
 	{
+		ft_apply_color_to_pixel(data, &line.pixel_1, &line.pixel_2);
 		ft_mlx_pixel_put(data, line.pixel_1, line.pixel_1.color, MAP);
 		bres.e2 = bres.err * 2;
 		if (bres.e2 > -bres.dy)

@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:21:41 by julien            #+#    #+#             */
-/*   Updated: 2025/02/07 17:39:31 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:18:33 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	ft_destroy_and_free_all(t_data *data)
 		ft_free_pixels(data);
 	ft_free_hud_panels(data);
 	free(data->colors);
+	free(data->opposite_colors);
 }
