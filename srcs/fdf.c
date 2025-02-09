@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:05:12 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/09 14:48:12 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:19:22 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ int	main(int argc, char **argv)
 	status_code = ft_init(&data);
 	if (handle_error(&data, status_code))
 		return (1);
-	mlx_key_hook(data.window.win_ptr, ft_handle_keys, &data);
-	mlx_hook(data.window.win_ptr, DestroyNotify,
-		StructureNotifyMask, ft_handle_close, &data);
+	mlx_hook(data.window.win_ptr, KeyPress, KeyPressMask,
+		ft_handle_keypress, &data);
+	mlx_hook(data.window.win_ptr, KeyRelease, KeyReleaseMask,
+		ft_handle_keyrelease, &data);
+	mlx_loop_hook(data.mlx_ptr, ft_repeat_key_events, &data);
 	mlx_loop(data.mlx_ptr);
 }

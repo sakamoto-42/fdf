@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/09 14:48:45 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:23:30 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <X11/X.h>
 # include <stdio.h>
 # include <math.h>
+
+# define KEY_MAX 65536
 
 # define TRANSLATION_STEP 20
 # define SCALE_Z_STEP 1
@@ -169,6 +171,11 @@ typedef struct s_panel_hud
 	unsigned int	color;
 }		t_panel_hud;
 
+typedef struct s_input
+{
+	int	keys[KEY_MAX];
+}		t_input;
+
 typedef struct s_data
 {
 	void			*mlx_ptr;
@@ -181,6 +188,7 @@ typedef struct s_data
 	t_panel_hud		left_panel_2;
 	t_panel_hud		right_panel_1;
 	t_panel_hud		right_panel_2;
+	t_input			input;
 	t_map			map;
 	t_render		render;
 	unsigned int	*colors;
@@ -239,11 +247,13 @@ void			ft_apply_scale_z_to_pixel(t_point point,
 					t_pixel *pixel, int scale_z);
 int				ft_update_image(t_data *data);
 int				ft_handle_close(t_data *data);
-int				ft_handle_keys(int keycode, t_data *data);
-void			ft_handle_keys_translation(t_data *data, int keycode);
-void			ft_handle_keys_isometric_projection(t_data *data, int keycode);
-void			ft_handle_keys_change_projection(t_data *data, int keycode);
-void			ft_handle_keys_common(t_data *data, int keycode);
+int				ft_handle_keypress(int keycode, t_data *data);
+int				ft_handle_keyrelease(int keycode, t_data *data);
+int				ft_repeat_key_events(t_data *data);
+void			ft_handle_keys_translation(t_data *data);
+void			ft_handle_keys_isometric_projection(t_data *data);
+void			ft_handle_keys_change_projection(t_data *data);
+void			ft_handle_keys_zoom(t_data *data);
 int				ft_init_hud(t_data *data);
 int				ft_allocate_panel_texts(t_panel_hud *panel);
 void			ft_set_panel_texts_offset_x(t_panel_hud *panel,

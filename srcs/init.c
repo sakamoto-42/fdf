@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/09 14:40:15 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:20:00 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_init(t_data *data)
 {
 	int	status_code;
 
+	ft_memset(data->input.keys, 0, sizeof(data->input.keys));
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (ERROR_MLX_INIT_FAILED);

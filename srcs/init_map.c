@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:15:28 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/09 14:44:11 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:43:50 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_check_valid_file(char *file)
 {
 	char	*extension;
 	int		fd;
+	char	*line;
 
 	if (!file)
 		return (ERROR_INVALID_FILE);
@@ -27,8 +28,10 @@ int	ft_check_valid_file(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (ERROR_CANNOT_OPEN_FILE);
-	if (!get_next_line(fd))
+	line = get_next_line(fd);
+	if (!line)
 		return (close(fd), ERROR_EMPTY_FILE);
+	free(line);
 	return (SUCCESS);
 }
 
