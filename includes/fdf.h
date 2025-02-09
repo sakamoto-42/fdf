@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/09 16:23:30 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/09 20:06:56 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,7 @@ typedef struct s_gradient
 	unsigned int	higher_color;
 }		t_gradient;
 
-int				ft_check_valid_file(char *file);
+//int				ft_check_valid_file(char *file);
 int				handle_error(t_data *data, int status_code);
 char			*ft_strerror(int errnum);
 int				ft_init(t_data *data);
@@ -330,4 +330,5 @@ int				ft_init_opposite_color_sets(t_data *data,
 void			ft_change_color(t_data *data);
 unsigned int	ft_get_opposite_color(t_data *data, unsigned int color);
 unsigned int	ft_get_gradient_color(t_data *data, t_gradient gradient);
+
 #endif
