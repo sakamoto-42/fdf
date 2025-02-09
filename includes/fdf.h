@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/09 12:43:32 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/09 14:48:45 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@
 # define ERROR_INVALID_NUMBER_OF_ARGUMENTS 1
 # define ERROR_CANNOT_OPEN_FILE 2
 # define ERROR_EMPTY_FILE 3
-# define ERROR_NOT_ENOUGH_MEMORY 4
-# define ERROR_MLX_INIT_FAILED 5
-# define ERROR_MLX_WINDOW_INIT_FAILED 6
-# define ERROR_MLX_IMG_INIT_FAILED 7
-# define ERROR_MLX_GET_IMG_ADDRESS_FAILED 7
+# define ERROR_INVALID_FILE 4
+# define ERROR_NOT_ENOUGH_MEMORY 5
+# define ERROR_MLX_INIT_FAILED 6
+# define ERROR_MLX_WINDOW_INIT_FAILED 7
+# define ERROR_MLX_IMG_INIT_FAILED 8
+# define ERROR_MLX_GET_IMG_ADDRESS_FAILED 9
 
 # define ORTHOGONAL_PROJECTION 0
 # define ISOMETRIC_PROJECTION 1
@@ -195,6 +196,8 @@ typedef struct s_gradient
 	unsigned int	higher_color;
 }		t_gradient;
 
+int				ft_check_valid_file(char *file);
+int				handle_error(t_data *data, int status_code);
 char			*ft_strerror(int errnum);
 int				ft_init(t_data *data);
 void			ft_init_default_settings(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:36:11 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/05 22:06:23 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/09 14:02:11 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strerror(int errnum)
 		return ("Error : could not open map file");
 	else if (errnum == ERROR_EMPTY_FILE)
 		return ("Error : empty map file");
+	else if (errnum == ERROR_INVALID_FILE)
+		return ("Error : invalid file");
 	else if (errnum == ERROR_NOT_ENOUGH_MEMORY)
 		return ("Error : not enough memory");
 	else if (errnum == ERROR_MLX_INIT_FAILED)

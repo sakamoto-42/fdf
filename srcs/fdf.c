@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 14:45:29 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/06 11:31:14 by julien           ###   ########.fr       */
+/*   Created: 2025/02/09 14:05:12 by juduchar          #+#    #+#             */
+/*   Updated: 2025/02/09 14:48:12 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@ int	ft_handle_close(t_data *data)
 	return (0);
 }
 
+int	handle_error(t_data *data, int status_code)
+{
+	if (status_code != SUCCESS)
+	{
+		ft_destroy_and_free_all(data);
+		ft_putstr_fd(ft_strerror(status_code), 2);
+		return (1);
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -27,25 +38,21 @@ int	main(int argc, char **argv)
 	if (argc - 1 != 1)
 		return (ft_putstr_fd(
 				ft_strerror(ERROR_INVALID_NUMBER_OF_ARGUMENTS), 2), 1);
+	status_code = ft_check_valid_file(argv[1]);
+	if (status_code != SUCCESS)
+		return (ft_putstr_fd(ft_strerror(status_code), 2), 1);
 	data.map.map_file = argv[1];
 	status_code = ft_init_map(&data);
-	if (status_code != SUCCESS)
-		return (ft_destroy_and_free_all(&data),
-			perror(ft_strerror(status_code)), 1);
+	if (handle_error(&data, status_code))
+		return (1);
 	status_code = ft_allocate_pixels(&data);
-	if (status_code != SUCCESS)
-		return (ft_destroy_and_free_all(&data),
-			perror(ft_strerror(status_code)), 1);
+	if (handle_error(&data, status_code))
+		return (1);
 	status_code = ft_init(&data);
-	if (status_code != SUCCESS)
-		return (ft_destroy_and_free_all(&data),
-			perror(ft_strerror(status_code)), 1);
+	if (handle_error(&data, status_code))
+		return (1);
 	mlx_key_hook(data.window.win_ptr, ft_handle_keys, &data);
 	mlx_hook(data.window.win_ptr, DestroyNotify,
 		StructureNotifyMask, ft_handle_close, &data);
 	mlx_loop(data.mlx_ptr);
 }
-
-// TODO ERROR MSG
-// # define ERROR_MLX_INIT_FAILED 5
-// # define ERROR_WINDOW_INIT_FAILED 6
