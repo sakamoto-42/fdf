@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/08 14:54:18 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:30:27 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_init_default_settings(t_data *data)
 	data->render.render_isometric.angle_x = M_PI / 6;
 	data->render.render_isometric.angle_y = 0;
 	data->render.render_isometric.angle_z = 0;
-	data->render.render_isometric.scale_z = 5;
+	data->render.render_isometric.scale_z = 1;
 }
 
 int	ft_init(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/08 23:07:36 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/09 12:43:32 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,7 @@ t_pixel			**ft_free_pixels(t_data *data);
 int				ft_set_points(t_data *data);
 void			ft_set_pixels_color(t_data *data, unsigned int color);
 void			ft_points_to_pixels(t_data *data);
+void			ft_process_pixel(t_data *data, t_point *point, t_pixel *pixel);
 int				ft_render_map(t_data *data);
 void			ft_render_isometric_projection(t_point point,
 					t_pixel *pixel, t_render render);

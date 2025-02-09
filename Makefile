@@ -30,6 +30,7 @@ FDF_LIBRARIES = -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -L$(MLX_DIR) $
 FDF_SRCS_FILES = \
 		allocate_and_free_pixels.c \
 		allocate_and_free_points.c \
+		apply_angles_to_pixels.c \
 		apply_params_to_pixels.c \
 		destroy_and_free.c \
 		draw_hud.c \
