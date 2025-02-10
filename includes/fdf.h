@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 11:36:18 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:26:40 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,6 @@ typedef struct s_gradient
 	unsigned int	higher_color;
 }		t_gradient;
 
-//int				ft_check_valid_file(char *file);
 int				handle_error(t_data *data, int status_code);
 char			*ft_strerror(int errnum);
 int				ft_init(t_data *data);

@@ -20,18 +20,14 @@
 #define	X_ShmAttach	1
 
 int	mlx_X_error;
-ssize_t result;
 
 int	shm_att_pb(Display *d,XErrorEvent *ev)
 {
   if (ev->request_code==146 && ev->minor_code==X_ShmAttach)
-  {
-    result = write(2,WARN_SHM_ATTACH,strlen(WARN_SHM_ATTACH));
-	if (result == -1)
-		perror("write error");
-  }
+    write(2,WARN_SHM_ATTACH,strlen(WARN_SHM_ATTACH));
   mlx_X_error = 1;
 }
+
 
 /*
 **  Data malloc :  width+32 ( bitmap_pad=32 ),    *4 = *32 / 8bit

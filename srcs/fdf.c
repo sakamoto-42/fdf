@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:05:12 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/09 19:48:27 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:28:21 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	main(int argc, char **argv)
 		ft_handle_keypress, &data);
 	mlx_hook(data.window.win_ptr, KeyRelease, KeyReleaseMask,
 		ft_handle_keyrelease, &data);
+	mlx_hook(data.window.win_ptr, DestroyNotify, StructureNotifyMask,
+		ft_handle_close, &data);
 	mlx_loop_hook(data.mlx_ptr, ft_repeat_key_events, &data);
 	mlx_loop(data.mlx_ptr);
 }
