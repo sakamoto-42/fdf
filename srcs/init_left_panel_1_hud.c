@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:02:18 by julien            #+#    #+#             */
-/*   Updated: 2025/02/08 22:23:57 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:51:42 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_init_left_panel_1(t_data *data, t_panel_hud *left_panel_1)
 {
-	left_panel_1->texts_count = 14;
+	left_panel_1->texts_count = 16;
 	if (!ft_allocate_panel_texts(left_panel_1))
 		return (0);
 	ft_set_panel_texts_offset_y(left_panel_1,
@@ -54,6 +54,8 @@ void	ft_set_left_panel_1_texts(t_data *data, t_panel_hud *left_panel_1)
 	left_panel_1->texts[11].text = "Zoom in : +";
 	left_panel_1->texts[12].text = "Zoom out : -";
 	left_panel_1->texts[13].text = "Change color : V";
+	left_panel_1->texts[14].text = "Decrease z scale : [";
+	left_panel_1->texts[15].text = "Increase z scale : ]";
 	ft_set_panel_texts_offset_x(left_panel_1, left_panel_1->offset_x
 		+ HUD_TEXT_OFFSET_X, 1);
 	ft_set_panel_texts_color(left_panel_1,

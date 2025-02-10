@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 10:39:28 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:42:43 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@
 # define KEY_MIRROR 109
 # define KEY_ZOOM_IN 61
 # define KEY_ZOOM_IN_2 86
+# define KEY_ZOOM_OUT 45
 # define KEY_ZOOM_OUT_2 82
 # define KEY_MOVE_UP 65362
 # define KEY_MOVE_DOWN 65364

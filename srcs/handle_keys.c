@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:18:25 by julien            #+#    #+#             */
-/*   Updated: 2025/02/10 10:36:59 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:45:04 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ int	ft_repeat_key_events(t_data *data)
 	if (data->input.keys[KEY_MOVE_UP] || data->input.keys[KEY_MOVE_DOWN]
 		|| data->input.keys[KEY_MOVE_LEFT] || data->input.keys[KEY_MOVE_RIGHT])
 		ft_handle_keys_translation(data);
+	if (data->input.keys[KEY_DECREASE_SCALE_Z])
+		data->render.render_isometric.scale_z
+			= data->render.render_isometric.scale_z
+			- (float)((float)SCALE_Z_STEP / 10);
+	if (data->input.keys[KEY_INCREASE_SCALE_Z])
+		data->render.render_isometric.scale_z
+			= data->render.render_isometric.scale_z + SCALE_Z_STEP;
 	if (data->input.keys[KEY_CLOSE])
 		ft_handle_close(data);
 	if (data->input.keys[KEY_ZOOM_IN] || data->input.keys[KEY_ZOOM_IN_2]

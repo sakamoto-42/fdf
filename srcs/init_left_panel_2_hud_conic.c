@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:10:42 by julien            #+#    #+#             */
-/*   Updated: 2025/02/10 01:21:53 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:48:40 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_init_left_panel_2_conic(t_data *data, t_panel_hud *left_panel_2_conic)
 {
-	left_panel_2_conic->texts_count = 11;
+	left_panel_2_conic->texts_count = 9;
 	if (!ft_allocate_panel_texts(left_panel_2_conic))
 		return (0);
 	ft_set_panel_texts_offset_y(left_panel_2_conic,
@@ -51,8 +51,6 @@ void	ft_set_left_panel_2_texts_conic(t_data *data,
 	left_panel_2_conic->texts[6].text = "Increase distortion x : S";
 	left_panel_2_conic->texts[7].text = "Decrease distortion y : Z";
 	left_panel_2_conic->texts[8].text = "Increase distortion y : X";
-	left_panel_2_conic->texts[9].text = "Decrease perspective : [";
-	left_panel_2_conic->texts[10].text = "Increase perspective : ]";
 	ft_set_panel_texts_offset_x(left_panel_2_conic, left_panel_2_conic->offset_x
 		+ HUD_TEXT_OFFSET_X, 1);
 	ft_set_panel_texts_color(left_panel_2_conic,

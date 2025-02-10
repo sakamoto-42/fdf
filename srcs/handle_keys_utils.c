@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:30:33 by julien            #+#    #+#             */
-/*   Updated: 2025/02/10 10:36:46 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:44:54 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,6 @@ void	ft_handle_keys_isometric_projection(t_data *data)
 	if (data->input.keys[KEY_INCREASE_Z_ANGLE])
 		data->render.render_isometric.angle_z
 			= data->render.render_isometric.angle_z + ANGLE_Z_STEP;
-	if (data->input.keys[KEY_DECREASE_SCALE_Z])
-		data->render.render_isometric.scale_z
-			= data->render.render_isometric.scale_z
-			- (float)((float)SCALE_Z_STEP / 10);
-	if (data->input.keys[KEY_INCREASE_SCALE_Z])
-		data->render.render_isometric.scale_z
-			= data->render.render_isometric.scale_z + SCALE_Z_STEP;
 }
 
 void	ft_handle_keys_change_projection(t_data *data)
