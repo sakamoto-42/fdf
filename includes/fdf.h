@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 10:42:43 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:36:18 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,18 @@
 # define KEY_MAX 65536
 
 # define TRANSLATION_STEP 20
-# define SCALE_Z_STEP 1
+# define ZOOM_STEP 1
+
 # define ANGLE_X_STEP 0.1
 # define ANGLE_Y_STEP 0.1
 # define ANGLE_Z_STEP 0.1
-# define ZOOM_STEP 1
+# define SCALE_Z_STEP 1
+
+# define ANGLE_STEP 0.1
+# define DISTANCE_STEP 10
+# define DISTORTION_X_STEP 0.05
+# define DISTORTION_Y_STEP 0.05
+# define PERSPECTIVE 0.02
 
 # define SUCCESS 0
 # define ERROR_INVALID_NUMBER_OF_ARGUMENTS 1
@@ -66,6 +73,7 @@
 # define KEY_MOVE_LEFT 65361
 # define KEY_MOVE_RIGHT 65363
 # define KEY_CHANGE_COLOR 118
+
 # define KEY_DECREASE_X_ANGLE 113
 # define KEY_INCREASE_X_ANGLE 101
 # define KEY_DECREASE_Y_ANGLE 97
@@ -74,6 +82,7 @@
 # define KEY_INCREASE_Z_ANGLE 115
 # define KEY_DECREASE_SCALE_Z 91
 # define KEY_INCREASE_SCALE_Z 93
+
 # define KEY_DECREASE_ANGLE 113
 # define KEY_INCREASE_ANGLE 101
 # define KEY_DECREASE_DISTANCE 97
@@ -277,6 +286,7 @@ int				ft_handle_keyrelease(int keycode, t_data *data);
 int				ft_repeat_key_events(t_data *data);
 void			ft_handle_keys_translation(t_data *data);
 void			ft_handle_keys_isometric_projection(t_data *data);
+void			ft_handle_keys_conic_projection(t_data *data);
 void			ft_handle_keys_change_projection(t_data *data);
 void			ft_handle_keys_zoom(t_data *data);
 int				ft_init_hud(t_data *data);
