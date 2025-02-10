@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:30:33 by julien            #+#    #+#             */
-/*   Updated: 2025/02/09 22:43:38 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:36:46 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	ft_handle_keys_change_projection(t_data *data)
 
 void	ft_handle_keys_zoom(t_data *data)
 {
-	if (data->input.keys[KEY_ZOOM_IN])
+	if (data->input.keys[KEY_ZOOM_IN] || data->input.keys[KEY_ZOOM_IN_2])
 		data->render.scale = data->render.scale + ZOOM_STEP;
-	if (data->input.keys[KEY_ZOOM_OUT])
+	if (data->input.keys[KEY_ZOOM_OUT] || data->input.keys[KEY_ZOOM_OUT_2])
 		data->render.scale = data->render.scale - ZOOM_STEP;
 }
 

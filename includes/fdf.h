@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 01:23:15 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:39:28 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,13 @@
 # define KEY_CENTER 99
 # define KEY_MIRROR 109
 # define KEY_ZOOM_IN 61
-# define KEY_ZOOM_OUT 45
+# define KEY_ZOOM_IN_2 86
+# define KEY_ZOOM_OUT_2 82
+# define KEY_MOVE_UP 65362
+# define KEY_MOVE_DOWN 65364
+# define KEY_MOVE_LEFT 65361
+# define KEY_MOVE_RIGHT 65363
+# define KEY_CHANGE_COLOR 118
 # define KEY_DECREASE_X_ANGLE 113
 # define KEY_INCREASE_X_ANGLE 101
 # define KEY_DECREASE_Y_ANGLE 97
@@ -67,11 +73,16 @@
 # define KEY_INCREASE_Z_ANGLE 115
 # define KEY_DECREASE_SCALE_Z 91
 # define KEY_INCREASE_SCALE_Z 93
-# define KEY_MOVE_UP 65362
-# define KEY_MOVE_DOWN 65364
-# define KEY_MOVE_LEFT 65361
-# define KEY_MOVE_RIGHT 65363
-# define KEY_CHANGE_COLOR 118
+# define KEY_DECREASE_ANGLE 113
+# define KEY_INCREASE_ANGLE 101
+# define KEY_DECREASE_DISTANCE 97
+# define KEY_INCREASE_DISTANCE 100
+# define KEY_DECREASE_DISTORTION_X 119
+# define KEY_INCREASE_DISTORTION_X 115
+# define KEY_DECREASE_DISTORTION_Y 122
+# define KEY_INCREASE_DISTORTION_Y 120
+# define KEY_DECREASE_PERSPECTIVE 91
+# define KEY_INCREASE_PERSPECTIVE 93
 
 typedef struct s_window
 {
