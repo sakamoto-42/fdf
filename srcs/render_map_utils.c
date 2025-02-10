@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:05:24 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 11:38:32 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:43:06 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	ft_render_isometric_projection(t_pixel *pixel, t_render render)
 {
-	pixel->x -= render.map_center_x;
-	pixel->y -= render.map_center_y;
+	//pixel->x -= render.map_center_x;
+	//pixel->y -= render.map_center_y;
+
+	ft_apply_angle_z_to_pixel(pixel, render);
 	ft_apply_angle_x_to_pixel(pixel, render);
 	ft_apply_angle_y_to_pixel(pixel, render);
-	ft_apply_angle_z_to_pixel(pixel, render);
-	pixel->x += render.map_center_x;
-	pixel->y += render.map_center_y;
+	//pixel->x += render.map_center_x;
+	//pixel->y += render.map_center_y;
 }
 
 void	ft_render_conic_projection(t_point point,

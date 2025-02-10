@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 15:26:40 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:02:56 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,6 +225,7 @@ typedef struct s_data
 	t_render		render;
 	unsigned int	*colors;
 	unsigned int	*opposite_colors;
+	int				need_redraw;
 }		t_data;
 
 typedef struct s_gradient

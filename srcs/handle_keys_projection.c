@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:18:49 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 11:29:59 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:08:03 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_handle_keys_isometric_projection(t_data *data)
 		data->render.render_isometric.angle_z -= ANGLE_Z_STEP;
 	if (data->input.keys[KEY_INCREASE_Z_ANGLE])
 		data->render.render_isometric.angle_z += ANGLE_Z_STEP;
+	data->need_redraw = 1;
 }
 
 void	ft_handle_keys_conic_projection(t_data *data)
@@ -50,6 +51,7 @@ void	ft_handle_keys_conic_projection(t_data *data)
 		data->render.render_conic.perspective_strength -= PERSPECTIVE;
 	if (data->input.keys[KEY_INCREASE_PERSPECTIVE])
 		data->render.render_conic.perspective_strength += PERSPECTIVE;
+	data->need_redraw = 1;
 }
 
 void	ft_handle_keys_change_projection(t_data *data)
@@ -63,4 +65,5 @@ void	ft_handle_keys_change_projection(t_data *data)
 	if (data->input.keys[KEY_CONIC]
 		&& data->render.projection != CONIC_PROJECTION)
 		data->render.projection = CONIC_PROJECTION;
+	data->need_redraw = 1;
 }

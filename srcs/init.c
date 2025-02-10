@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 01:06:33 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:25:32 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@ void	ft_init_default_settings(t_data *data)
 {
 	ft_get_screen_size(data->mlx_ptr,
 		&data->window.size_x, &data->window.size_y);
+	data->need_redraw = 0;
 	data->window.title = "fdf";
 	data->render.projection = ISOMETRIC_PROJECTION;
 	data->render.scale = 20;
 	data->render.color = data->colors[0];
 	data->render.opposite_color = data->opposite_colors[0];
-	data->render.render_isometric.angle_x = M_PI / 6;
+	data->render.render_isometric.angle_x = M_PI / 4;
 	data->render.render_isometric.angle_y = 0;
-	data->render.render_isometric.angle_z = 0;
+	data->render.render_isometric.angle_z = M_PI / 4;
 	data->render.render_isometric.scale_z = 1;
 	data->render.render_conic.distance = 1000;
 	data->render.render_conic.angle = 0.2;

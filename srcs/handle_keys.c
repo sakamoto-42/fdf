@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:18:25 by julien            #+#    #+#             */
-/*   Updated: 2025/02/10 11:20:11 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:07:45 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_handle_keypress(int keycode, t_data *data)
 		ft_handle_keys_change_projection(data);
 	if (data->input.keys[KEY_CLOSE])
 		ft_handle_close(data);
+	data->need_redraw = 1;
 	return (0);
 }
 
@@ -50,6 +51,7 @@ void	ft_handle_repeat_keys_all_projections(t_data *data)
 	if (data->input.keys[KEY_INCREASE_SCALE_Z])
 		data->render.render_isometric.scale_z
 			= data->render.render_isometric.scale_z + SCALE_Z_STEP;
+	data->need_redraw = 1;
 }
 
 int	ft_repeat_key_events(t_data *data)
