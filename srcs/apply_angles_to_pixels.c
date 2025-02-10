@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:35:52 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 16:39:40 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:52:07 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_apply_angle_x_to_pixel(t_pixel *pixel, t_render render)
 
 	y = pixel->y;
 	z = pixel->z;
-	printf("%f\n", cos(render.render_isometric.angle_x));
 	pixel->y = ((double)y * cos(render.render_isometric.angle_x)
 			- (double)z * sin(render.render_isometric.angle_x));
 	pixel->z = (double)y * sin(render.render_isometric.angle_x)
