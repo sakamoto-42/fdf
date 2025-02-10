@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:50:27 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/07 13:52:51 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 01:07:56 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	ft_draw_hud(t_data *data)
 	ft_draw_panel_hud(data, data->header_panel);
 	ft_draw_panel_hud(data, data->left_panel_1);
 	if (data->render.projection == ISOMETRIC_PROJECTION)
-		ft_draw_panel_hud(data, data->left_panel_2);
+		ft_draw_panel_hud(data, data->left_panel_2_isometric);
+	if (data->render.projection == CONIC_PROJECTION)
+		ft_draw_panel_hud(data, data->left_panel_2_conic);
 	ft_draw_panel_hud(data, data->right_panel_2);
 	ft_draw_panel_hud(data, data->right_panel_1);
 }

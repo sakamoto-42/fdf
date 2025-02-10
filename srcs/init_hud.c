@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:53:11 by julien            #+#    #+#             */
-/*   Updated: 2025/02/08 22:23:31 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 01:09:19 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ int	ft_init_hud(t_data *data)
 		return (0);
 	if (!ft_init_left_panel_1(data, &data->left_panel_1))
 		return (0);
-	if (!ft_init_left_panel_2(data, &data->left_panel_2))
+	if (!ft_init_left_panel_2_isometric(data, &data->left_panel_2_isometric))
+		return (0);
+	if (!ft_init_left_panel_2_conic(data, &data->left_panel_2_conic))
 		return (0);
 	if (!ft_init_right_panel_1(data, &data->right_panel_1))
 		return (0);

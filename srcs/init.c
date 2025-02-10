@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/09 16:20:00 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 01:06:33 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	ft_init_default_settings(t_data *data)
 	data->render.render_isometric.angle_y = 0;
 	data->render.render_isometric.angle_z = 0;
 	data->render.render_isometric.scale_z = 1;
+	data->render.render_conic.distance = 1000;
+	data->render.render_conic.angle = 0.2;
+	data->render.render_conic.distortion_x = 1;
+	data->render.render_conic.distortion_y = 1;
+	data->render.render_conic.perspective_strength = 1;
 }
 
 int	ft_init(t_data *data)

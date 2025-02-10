@@ -1,0 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_left_panel_2_hud_isometric.c                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/06 12:10:42 by julien            #+#    #+#             */
+/*   Updated: 2025/02/10 01:22:47 by juduchar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fdf.h"
+
+int	ft_init_left_panel_2_isometric(t_data *data,
+	t_panel_hud *left_panel_2_isometric)
+{
+	left_panel_2_isometric->texts_count = 9;
+	if (!ft_allocate_panel_texts(left_panel_2_isometric))
+		return (0);
+	ft_set_panel_texts_offset_y(left_panel_2_isometric,
+		(data->header_panel.texts_count + 1) * HUD_TEXT_HEIGHT);
+	ft_set_left_panel_2_display_isometric(data, left_panel_2_isometric);
+	ft_set_left_panel_2_texts_isometric(data, left_panel_2_isometric);
+	return (1);
+}
+
+void	ft_set_left_panel_2_display_isometric(t_data *data,
+	t_panel_hud *left_panel_2_isometric)
+{
+	left_panel_2_isometric->size_x = 200;
+	left_panel_2_isometric->size_y = (left_panel_2_isometric->texts_count + 1)
+		* HUD_TEXT_HEIGHT;
+	left_panel_2_isometric->offset_x = 200;
+	left_panel_2_isometric->offset_y = (data->header_panel.texts_count + 1)
+		* HUD_TEXT_HEIGHT;
+	left_panel_2_isometric->color = ft_rgb_to_color(data, 255, 0, 0);
+}
+
+void	ft_set_left_panel_2_texts_isometric(t_data *data,
+	t_panel_hud *left_panel_2_isometric)
+{
+	left_panel_2_isometric->texts[0].text = "ISOMETRIC PROJECTION COMMANDS :";
+	left_panel_2_isometric->texts[0].offset_x = left_panel_2_isometric->offset_x
+		+ (left_panel_2_isometric->size_x - 6
+			* ft_strlen(left_panel_2_isometric->texts[0].text)) / 2;
+	left_panel_2_isometric->texts[1].text = "Decrease x angle : Q";
+	left_panel_2_isometric->texts[2].text = "Increase x angle : E";
+	left_panel_2_isometric->texts[3].text = "Decrease y angle : A";
+	left_panel_2_isometric->texts[4].text = "Increase y angle : D";
+	left_panel_2_isometric->texts[5].text = "Decrease z angle : W";
+	left_panel_2_isometric->texts[6].text = "Increase z angle : S";
+	left_panel_2_isometric->texts[7].text = "Decrease z scale : [";
+	left_panel_2_isometric->texts[8].text = "Increase z scale : ]";
+	ft_set_panel_texts_offset_x(left_panel_2_isometric,
+		left_panel_2_isometric->offset_x + HUD_TEXT_OFFSET_X, 1);
+	ft_set_panel_texts_color(left_panel_2_isometric,
+		ft_rgb_to_color(data, 255, 255, 255), 0);
+}

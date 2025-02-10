@@ -32,6 +32,7 @@ FDF_SRCS_FILES = \
 		allocate_and_free_points.c \
 		apply_angles_to_pixels.c \
 		apply_params_to_pixels.c \
+		center_map.c \
 		destroy_and_free.c \
 		draw_hud.c \
 		draw_map.c \
@@ -44,7 +45,8 @@ FDF_SRCS_FILES = \
 		init_header_panel_hud.c \
 		init_hud.c \
 		init_left_panel_1_hud.c \
-		init_left_panel_2_hud.c \
+		init_left_panel_2_hud_conic.c \
+		init_left_panel_2_hud_isometric.c \
 		init_map.c \
 		init_right_panel_1_hud.c \
 		init_right_panel_2_hud.c \

@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:21:41 by julien            #+#    #+#             */
-/*   Updated: 2025/02/09 19:45:39 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 01:08:50 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ void	ft_free_hud_panels(t_data *data)
 		free(data->header_panel.texts);
 	if (data->left_panel_1.texts)
 		free(data->left_panel_1.texts);
-	if (data->left_panel_2.texts)
-		free(data->left_panel_2.texts);
+	if (data->left_panel_2_isometric.texts)
+		free(data->left_panel_2_isometric.texts);
+	if (data->left_panel_2_conic.texts)
+		free(data->left_panel_2_conic.texts);
 	if (data->right_panel_1.texts)
 		ft_free_panel_texts(data->right_panel_1);
 	if (data->right_panel_2.texts)

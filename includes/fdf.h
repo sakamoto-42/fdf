@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/09 20:06:56 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/10 01:23:15 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ typedef struct s_point
 	int			z;
 }		t_point;
 
-typedef struct s_isometric
+typedef struct s_render_isometric
 {
 	double	angle_x;
 	double	angle_y;
@@ -131,6 +131,15 @@ typedef struct s_isometric
 
 }		t_render_isometric;
 
+typedef struct s_conic
+{
+	double	distance;
+	double	angle;
+	double	distortion_x;
+	double	distortion_y;
+	double	perspective_strength;
+}		t_render_conic;
+
 typedef struct s_render
 {
 	int					projection;
@@ -138,6 +147,7 @@ typedef struct s_render
 	int					offset_x;
 	int					offset_y;
 	t_render_isometric	render_isometric;
+	t_render_conic		render_conic;
 	unsigned int		color;
 	unsigned int		opposite_color;
 	int					map_center_x;
@@ -185,7 +195,8 @@ typedef struct s_data
 	int				hud_height;
 	t_panel_hud		header_panel;
 	t_panel_hud		left_panel_1;
-	t_panel_hud		left_panel_2;
+	t_panel_hud		left_panel_2_isometric;
+	t_panel_hud		left_panel_2_conic;
 	t_panel_hud		right_panel_1;
 	t_panel_hud		right_panel_2;
 	t_input			input;
@@ -221,12 +232,14 @@ t_pixel			**ft_free_points(t_data *data);
 int				ft_allocate_pixels(t_data *data);
 t_pixel			**ft_free_pixels_until(t_pixel **pixels, size_t n);
 t_pixel			**ft_free_pixels(t_data *data);
+void			ft_free_panel_texts(t_panel_hud panel);
 int				ft_set_points(t_data *data);
 void			ft_set_pixels_color(t_data *data, unsigned int color);
 void			ft_points_to_pixels(t_data *data);
 void			ft_process_pixel(t_data *data, t_point *point, t_pixel *pixel);
 int				ft_render_map(t_data *data);
-void			ft_render_isometric_projection(t_point point,
+void			ft_render_isometric_projection(t_pixel *pixel, t_render render);
+void			ft_render_conic_projection(t_point point,
 					t_pixel *pixel, t_render render);
 void			ft_center_map(t_data *data);
 void			ft_free_hud_panels(t_data *data);
@@ -276,11 +289,18 @@ void			ft_set_left_panel_1_texts(t_data *data,
 					t_panel_hud *left_panel_1);
 void			ft_set_left_panel_1_dynamic_texts(t_data *data,
 					t_panel_hud *left_panel_1);
-int				ft_init_left_panel_2(t_data *data, t_panel_hud *left_panel_2);
-void			ft_set_left_panel_2_display(t_data *data,
-					t_panel_hud *left_panel_2);
-void			ft_set_left_panel_2_texts(t_data *data,
-					t_panel_hud *left_panel_2);
+int				ft_init_left_panel_2_isometric(t_data *data,
+					t_panel_hud *left_panel_2_isometric);
+int				ft_init_left_panel_2_conic(t_data *data,
+					t_panel_hud *left_panel_2_conic);
+void			ft_set_left_panel_2_display_isometric(t_data *data,
+					t_panel_hud *left_panel_2_isometric);
+void			ft_set_left_panel_2_display_conic(t_data *data,
+					t_panel_hud *left_panel_2_conic);
+void			ft_set_left_panel_2_texts_isometric(t_data *data,
+					t_panel_hud *left_panel_2_isometric);
+void			ft_set_left_panel_2_texts_conic(t_data *data,
+					t_panel_hud *left_panel_2_conic);
 int				ft_init_right_panel_1(t_data *data, t_panel_hud *right_panel_1);
 void			ft_set_right_panel_1_display(t_data *data,
 					t_panel_hud *right_panel_1);
