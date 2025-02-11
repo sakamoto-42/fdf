@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:05:24 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/11 14:31:35 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:54:51 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ void	ft_render_conic_projection(t_pixel *pixel, t_render render)
 	pixel->y -= render.map_center_y;
 	z_factor = (pixel->z / render.render_conic.distance)
 		* render.render_conic.perspective_strength;
-	pixel->x = (int)((pixel->x / (1 + z_factor)) * render.render_conic.distortion_x);
-	pixel->y = (int)((pixel->y / (1 + z_factor)) * render.render_conic.distortion_y);
+	pixel->x = (int)((pixel->x / (1 + z_factor))
+			* render.render_conic.distortion_x);
+	pixel->y = (int)((pixel->y / (1 + z_factor))
+			* render.render_conic.distortion_y);
 	pixel->y += (int)(pixel->z * tan(render.render_conic.angle));
 	pixel->x += render.map_center_x;
 	pixel->y += render.map_center_y;

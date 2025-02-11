@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/11 15:52:41 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:54:28 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	ft_init_default_settings(t_data *data)
 	data->render.scale = 20;
 	data->render.color = data->colors[0];
 	data->render.opposite_color = data->opposite_colors[0];
-	data->render.render_isometric.angle_x = M_PI / 6;
+	data->render.render_isometric.angle_x = 45 * (M_PI / 180);
 	data->render.render_isometric.angle_y = 0;
-	data->render.render_isometric.angle_z = M_PI / 6;
+	data->render.render_isometric.angle_z = 45 * (M_PI / 180);
 	data->render.render_isometric.scale_z = 1;
 	data->render.render_conic.distance = 1000;
 	data->render.render_conic.angle = 0.2;
@@ -45,7 +45,7 @@ void	ft_init_default_settings(t_data *data)
 int	ft_init(t_data *data)
 {
 	int	status_code;
-	
+
 	ft_memset(data->input.keys, 0, sizeof(data->input.keys));
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
