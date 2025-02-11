@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:06:08 by julien            #+#    #+#             */
-/*   Updated: 2025/02/09 10:36:02 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:28:36 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ unsigned int	ft_get_color_for_pixel(t_data *data, t_pixel *pixel)
 	int			max_z;
 	t_gradient	gradient;
 
-	min_z = ft_get_min_z(&data->map);
-	max_z = ft_get_max_z(&data->map);
+	min_z = data->map.min_z;
+	max_z = data->map.max_z;
 	if (pixel->z == min_z)
 		return (data->render.color);
 	else if (pixel->z == max_z)
@@ -35,10 +35,10 @@ unsigned int	ft_get_color_for_pixel(t_data *data, t_pixel *pixel)
 	}
 }
 
-void	ft_apply_scale_to_pixel(t_point point, t_pixel *pixel, int scale)
+void	ft_apply_scale_to_pixel(t_pixel *pixel, int scale)
 {
-	pixel->x = point.x * scale;
-	pixel->y = point.y * scale;
+	pixel->x = pixel->x * scale;
+	pixel->y = pixel->y * scale;
 }
 
 void	ft_apply_offset_to_pixel(t_pixel *pixel, t_render render)
@@ -47,7 +47,7 @@ void	ft_apply_offset_to_pixel(t_pixel *pixel, t_render render)
 	pixel->y += render.offset_y;
 }
 
-void	ft_apply_scale_z_to_pixel(t_point point, t_pixel *pixel, int scale_z)
+void	ft_apply_scale_z_to_pixel(t_pixel *pixel, int z, int scale_z)
 {
-	pixel->y = pixel->y - point.z * scale_z;
+	pixel->y = pixel->y - z * scale_z;
 }

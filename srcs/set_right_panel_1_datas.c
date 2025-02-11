@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 16:10:12 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/07 16:11:48 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:23:29 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_set_right_panel_1_min_z(t_data *data,
 	char	*min_z;
 	char	*min_z_display;
 
-	min_z = ft_itoa(ft_get_min_z(&data->map));
+	min_z = ft_itoa(data->map.min_z);
 	if (!min_z)
 		return ;
 	min_z_display = ft_strjoin("Min z : ", min_z);
@@ -82,7 +82,7 @@ void	ft_set_right_panel_1_max_z(t_data *data,
 	char	*max_z;
 	char	*max_z_display;
 
-	max_z = ft_itoa(ft_get_max_z(&data->map));
+	max_z = ft_itoa(data->map.max_z);
 	if (!max_z)
 		return ;
 	max_z_display = ft_strjoin("Max z : ", max_z);

@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:05:24 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 16:52:02 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:31:35 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	ft_render_isometric_projection(t_pixel *pixel, t_render render)
 	ft_apply_angle_y_to_pixel(pixel, render);
 }
 
-void	ft_render_conic_projection(t_point point,
-	t_pixel *pixel, t_render render)
+void	ft_render_conic_projection(t_pixel *pixel, t_render render)
 {
 	double	z_factor;
 
@@ -28,13 +27,11 @@ void	ft_render_conic_projection(t_point point,
 		render.render_conic.distance = 1;
 	pixel->x -= render.map_center_x;
 	pixel->y -= render.map_center_y;
-	z_factor = (point.z / render.render_conic.distance)
+	z_factor = (pixel->z / render.render_conic.distance)
 		* render.render_conic.perspective_strength;
-	pixel->x = (int)((point.x / (1 + z_factor)) * render.scale
-			* render.render_conic.distortion_x);
-	pixel->y = (int)((point.y / (1 + z_factor)) * render.scale
-			* render.render_conic.distortion_y);
-	pixel->y += (int)(point.z * tan(render.render_conic.angle));
+	pixel->x = (int)((pixel->x / (1 + z_factor)) * render.render_conic.distortion_x);
+	pixel->y = (int)((pixel->y / (1 + z_factor)) * render.render_conic.distortion_y);
+	pixel->y += (int)(pixel->z * tan(render.render_conic.angle));
 	pixel->x += render.map_center_x;
 	pixel->y += render.map_center_y;
 }

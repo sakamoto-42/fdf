@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 16:02:56 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:30:44 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,8 @@ typedef struct s_map
 	int			rows;
 	int			cols;
 	t_point		**points;
+	int			min_z;
+	int			max_z;
 }		t_map;
 
 typedef struct s_text_hud
@@ -260,8 +262,7 @@ void			ft_points_to_pixels(t_data *data);
 void			ft_process_pixel(t_data *data, t_point *point, t_pixel *pixel);
 int				ft_render_map(t_data *data);
 void			ft_render_isometric_projection(t_pixel *pixel, t_render render);
-void			ft_render_conic_projection(t_point point,
-					t_pixel *pixel, t_render render);
+void			ft_render_conic_projection(t_pixel *pixel, t_render render);
 void			ft_center_map(t_data *data);
 void			ft_free_hud_panels(t_data *data);
 void			ft_destroy_and_free_all(t_data *data);
@@ -271,14 +272,12 @@ void			ft_set_gradient_values(t_gradient *gradient,
 void			ft_update_bres(t_bresenham *bres, t_pixel *pixel);
 void			ft_draw_line(t_data *data, t_line line);
 unsigned int	ft_get_color_for_pixel(t_data *data, t_pixel *pixel);
-void			ft_apply_scale_to_pixel(t_point point,
-					t_pixel *pixel, int scale);
+void			ft_apply_scale_to_pixel(t_pixel *pixel, int scale);
 void			ft_apply_offset_to_pixel(t_pixel *pixel, t_render render);
 void			ft_apply_angle_x_to_pixel(t_pixel *pixel, t_render render);
 void			ft_apply_angle_y_to_pixel(t_pixel *pixel, t_render render);
 void			ft_apply_angle_z_to_pixel(t_pixel *pixel, t_render render);
-void			ft_apply_scale_z_to_pixel(t_point point,
-					t_pixel *pixel, int scale_z);
+void			ft_apply_scale_z_to_pixel(t_pixel *pixel, int z, int scale_z);
 int				ft_update_image(t_data *data);
 int				ft_handle_close(t_data *data);
 int				ft_handle_keypress(int keycode, t_data *data);

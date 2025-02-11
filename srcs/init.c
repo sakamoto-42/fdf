@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 16:25:32 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:22:52 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,17 @@ void	ft_init_default_settings(t_data *data)
 	data->render.scale = 20;
 	data->render.color = data->colors[0];
 	data->render.opposite_color = data->opposite_colors[0];
-	data->render.render_isometric.angle_x = M_PI / 4;
+	data->render.render_isometric.angle_x = M_PI / 6;
 	data->render.render_isometric.angle_y = 0;
-	data->render.render_isometric.angle_z = M_PI / 4;
+	data->render.render_isometric.angle_z = M_PI / 6;
 	data->render.render_isometric.scale_z = 1;
 	data->render.render_conic.distance = 1000;
 	data->render.render_conic.angle = 0.2;
 	data->render.render_conic.distortion_x = 1;
 	data->render.render_conic.distortion_y = 1;
 	data->render.render_conic.perspective_strength = 1;
+	data->map.min_z = ft_get_min_z(&data->map);
+	data->map.max_z = ft_get_max_z(&data->map);
 }
 
 int	ft_init(t_data *data)
