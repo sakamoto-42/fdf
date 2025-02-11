@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/11 14:22:52 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:52:41 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	ft_init_default_settings(t_data *data)
 	data->render.render_conic.distortion_x = 1;
 	data->render.render_conic.distortion_y = 1;
 	data->render.render_conic.perspective_strength = 1;
-	data->map.min_z = ft_get_min_z(&data->map);
-	data->map.max_z = ft_get_max_z(&data->map);
+	data->map.min_z = ft_get_min_z(data);
+	data->map.max_z = ft_get_max_z(data);
 }
 
 int	ft_init(t_data *data)
 {
 	int	status_code;
-
+	
 	ft_memset(data->input.keys, 0, sizeof(data->input.keys));
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)

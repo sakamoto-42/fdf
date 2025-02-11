@@ -6,17 +6,14 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:37:52 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/11 14:29:57 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:07:20 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_process_pixel(t_data *data, t_point *point, t_pixel *pixel)
+void	ft_process_pixel(t_data *data, t_pixel *pixel)
 {
-	pixel->x = point->x;
-	pixel->y = point->y;
-	pixel->z = point->z;
 	int z = pixel->z;
 	pixel->color = ft_get_color_for_pixel(data, pixel);
 	ft_apply_scale_to_pixel(pixel, data->render.scale);
@@ -33,8 +30,6 @@ void	ft_points_to_pixels(t_data *data)
 {
 	int		row_count;
 	int		col_count;
-	t_point	point;
-	t_pixel	*pixel;
 
 	row_count = 0;
 	while (row_count < data->map.rows)
@@ -42,11 +37,7 @@ void	ft_points_to_pixels(t_data *data)
 		col_count = 0;
 		while (col_count < data->map.cols)
 		{
-			point = data->map.points[row_count][col_count];
-			pixel = &data->pixels[row_count][col_count];
-			point.x -= data->render.map_center_x;
-			point.y -= data->render.map_center_y;
-			ft_process_pixel(data, &point, pixel);
+			ft_process_pixel(data, &data->pixels[row_count][col_count]);
 			col_count++;
 		}
 		row_count++;

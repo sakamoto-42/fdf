@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/11 14:30:44 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:59:10 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,13 +136,6 @@ typedef struct s_bresenham
 	int	e2;
 }		t_bresenham;
 
-typedef struct s_point
-{
-	int			x;
-	int			y;
-	int			z;
-}		t_point;
-
 typedef struct s_render_isometric
 {
 	double	angle_x;
@@ -180,7 +173,6 @@ typedef struct s_map
 	char		*map_file;
 	int			rows;
 	int			cols;
-	t_point		**points;
 	int			min_z;
 	int			max_z;
 }		t_map;
@@ -249,9 +241,6 @@ int				ft_init_image(t_data *data);
 int				ft_rgb_to_color(t_data *data, int r, int g, int b);
 void			ft_mlx_pixel_put(t_data *data, t_pixel pixel,
 					unsigned int color, int mode);
-int				ft_allocate_points(t_data *data);
-t_point			**ft_free_points_until(t_point **points, size_t n);
-t_pixel			**ft_free_points(t_data *data);
 int				ft_allocate_pixels(t_data *data);
 t_pixel			**ft_free_pixels_until(t_pixel **pixels, size_t n);
 t_pixel			**ft_free_pixels(t_data *data);
@@ -259,7 +248,7 @@ void			ft_free_panel_texts(t_panel_hud panel);
 int				ft_set_points(t_data *data);
 void			ft_set_pixels_color(t_data *data, unsigned int color);
 void			ft_points_to_pixels(t_data *data);
-void			ft_process_pixel(t_data *data, t_point *point, t_pixel *pixel);
+void			ft_process_pixel(t_data *data, t_pixel *pixel);
 int				ft_render_map(t_data *data);
 void			ft_render_isometric_projection(t_pixel *pixel, t_render render);
 void			ft_render_conic_projection(t_pixel *pixel, t_render render);
@@ -337,8 +326,8 @@ void			ft_set_right_panel_1_min_z(t_data *data,
 					t_panel_hud *right_panel_1);
 void			ft_set_right_panel_1_max_z(t_data *data,
 					t_panel_hud *right_panel_1);
-int				ft_get_min_z(t_map *map);
-int				ft_get_max_z(t_map *map);
+int				ft_get_min_z(t_data *data);
+int				ft_get_max_z(t_data *data);
 int				ft_init_right_panel_2(t_data *data, t_panel_hud *right_panel_2);
 void			ft_set_right_panel_2_display(t_data *data,
 					t_panel_hud *right_panel_2);

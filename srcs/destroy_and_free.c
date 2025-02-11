@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:21:41 by julien            #+#    #+#             */
-/*   Updated: 2025/02/10 01:08:50 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:57:25 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ void	ft_destroy_and_free_all(t_data *data)
 		mlx_destroy_display(data->mlx_ptr);
 		free(data->mlx_ptr);
 	}
-	if (data->map.points)
-		ft_free_points(data);
 	if (data->pixels)
 		ft_free_pixels(data);
 	ft_free_hud_panels(data);

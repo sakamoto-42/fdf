@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_points.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julien <julien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:51:53 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/06 11:12:39 by julien           ###   ########.fr       */
+/*   Updated: 2025/02/11 15:44:32 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	ft_set_points_datas(t_data *data, char **cols,
 	int row_count, int *col_count)
 {
-	data->map.points[row_count][*col_count].x = *col_count;
-	data->map.points[row_count][*col_count].y = row_count;
-	data->map.points[row_count][*col_count].z = ft_atoi(cols[*col_count]);
+	data->pixels[row_count][*col_count].x = *col_count;
+	data->pixels[row_count][*col_count].y = row_count;
+	data->pixels[row_count][*col_count].z = ft_atoi(cols[*col_count]);
 	(*col_count)++;
 }
 
