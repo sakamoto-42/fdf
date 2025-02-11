@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:37:52 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/11 19:56:48 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/11 21:39:07 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	ft_points_to_pixels(t_data *data)
 		col_count = 0;
 		while (col_count < data->map.cols)
 		{
+			data->pixels[row_count][col_count].x -= data->render.map_center_x;
+			data->pixels[row_count][col_count].y -= data->render.map_center_y;
 			ft_process_pixel(data, &data->pixels[row_count][col_count]);
 			col_count++;
 		}
