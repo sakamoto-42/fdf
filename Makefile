@@ -4,7 +4,7 @@ FT_PRINTF = libftprintf.a
 MLX = libmlx.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -O3
+CFLAGS = -Wall -Wextra -Werror -g -O3
 MLX_FLAGS = -lmlx -lX11 -lXext
 MATH_FLAG = -lm
 

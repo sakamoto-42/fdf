@@ -6,11 +6,52 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:51:53 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/12 14:39:23 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:28:56 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+unsigned int	ft_strtoui(char *str)
+{
+	unsigned int	result;
+	unsigned int	digit;
+
+	result = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n')
+		str++;
+	if (*str == '0' && (*(str + 1) == 'x' || *(str + 1) == 'X'))
+		str += 2;
+	while ((*str >= '0' && *str <= '9') || (*str >= 'a' && *str <= 'f'))
+	{
+		if (*str >= '0' && *str <= '9')
+			digit = *str - '0';
+		else if (*str >= 'A' && *str <= 'F')
+			digit = *str - 'A' + 10;
+		else
+			digit = *str - 'a' + 10;
+		result = (result * 16) + digit;
+		str++;
+	}
+	return (result);
+}
+
+static void	ft_set_pixel_color(t_data *data, char *col_str, t_pixel *pixel)
+{
+	char	*color_str;
+
+	if (data->render.base_color == 0)
+	{
+		color_str = ft_strchr(col_str, ',');
+		if (color_str && *(color_str + 1))
+		{
+			pixel->color = (unsigned int)ft_strtoui(color_str + 1);
+			data->render.base_color--;
+		}
+	}
+	else
+		data->render.base_color = 0;
+}
 
 static void	ft_set_points_datas(t_data *data, char **cols,
 	int row_count, int *col_count)
@@ -18,6 +59,8 @@ static void	ft_set_points_datas(t_data *data, char **cols,
 	data->pixels[row_count][*col_count].x = *col_count;
 	data->pixels[row_count][*col_count].y = row_count;
 	data->pixels[row_count][*col_count].z = ft_atoi(cols[*col_count]) / 5;
+	ft_set_pixel_color(data, cols[*col_count],
+		&data->pixels[row_count][*col_count]);
 	(*col_count)++;
 }
 

@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:15:28 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/11 20:57:13 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:18:18 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	ft_init_map(t_data *data)
 	data->render.map_center_x = (data->map.cols - 1) / 2;
 	data->render.map_center_y = (data->map.rows - 1) / 2;
 	status_code = ft_allocate_pixels(data);
+	data->render.base_color = 1;
 	status_code = ft_set_points(data);
 	return (status_code);
 }

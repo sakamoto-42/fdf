@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/12 15:06:01 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:22:37 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ typedef struct s_render_isometric
 	double	angle_y;
 	double	angle_z;
 	int		scale_z;
-
 }		t_render_isometric;
 
 typedef struct s_conic
@@ -166,6 +165,7 @@ typedef struct s_render
 	unsigned int		opposite_color;
 	int					map_center_x;
 	int					map_center_y;
+	int					base_color;
 }		t_render;
 
 typedef struct s_map

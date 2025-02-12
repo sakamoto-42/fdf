@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:30:33 by julien            #+#    #+#             */
-/*   Updated: 2025/02/12 14:09:53 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:23:06 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_change_color(t_data *data)
 {
 	static int	color_index = 1;
 
+	data->render.base_color = 0;
 	if (color_index >= 7)
 		color_index = 0;
 	data->render.color = data->colors[color_index];
