@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:43:40 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/12 14:39:56 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:06:01 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,10 +256,18 @@ void			ft_center_map(t_data *data);
 void			ft_free_hud_panels(t_data *data);
 void			ft_destroy_and_free_all(t_data *data);
 void			ft_draw_map(t_data *data);
+void			ft_draw_horizontal_line(t_data *data,
+					t_line *line, int row_count, int col_count);
+void			ft_draw_vertical_line(t_data *data,
+					t_line *line, int row_count, int col_count);
+int				ft_line_is_in_screen(t_data *data,
+					t_pixel *pixel_1, t_pixel *pixel_2);
 void			ft_set_gradient_values(t_gradient *gradient,
 					int value, int max_value, t_line line);
 void			ft_update_bres(t_bresenham *bres, t_pixel *pixel);
 void			ft_draw_line(t_data *data, t_line line);
+void			ft_set_bres_sx_sy(t_bresenham *bres, t_line line);
+void			ft_update_bres(t_bresenham *bres, t_pixel *pixel);
 unsigned int	ft_get_color_for_pixel(t_data *data, t_pixel *pixel);
 void			ft_apply_scale_to_pixel(t_pixel *pixel, int scale);
 void			ft_apply_offset_to_pixel(t_pixel *pixel, t_render render);

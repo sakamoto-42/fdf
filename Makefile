@@ -34,6 +34,7 @@ FDF_SRCS_FILES = \
 		center_map.c \
 		destroy_and_free.c \
 		draw_hud.c \
+		draw_line.c \
 		draw_map.c \
 		error_msg.c \
 		fdf.c \
