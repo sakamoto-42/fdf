@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:18:25 by julien            #+#    #+#             */
-/*   Updated: 2025/02/10 16:07:45 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:12:43 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ int	ft_handle_keypress(int keycode, t_data *data)
 	if (keycode == KEY_CENTER)
 		ft_center_map(data);
 	if (keycode == KEY_MIRROR)
+	{
 		data->render.scale = -data->render.scale;
+		data->need_redraw = 2;
+	}
 	if (data->input.keys[KEY_ORTHOGONAL]
 		|| data->input.keys[KEY_ISOMETRIC] || data->input.keys[KEY_CONIC])
 		ft_handle_keys_change_projection(data);
 	if (data->input.keys[KEY_CLOSE])
 		ft_handle_close(data);
-	data->need_redraw = 1;
 	return (0);
 }
 
@@ -51,7 +53,7 @@ void	ft_handle_repeat_keys_all_projections(t_data *data)
 	if (data->input.keys[KEY_INCREASE_SCALE_Z])
 		data->render.render_isometric.scale_z
 			= data->render.render_isometric.scale_z + SCALE_Z_STEP;
-	data->need_redraw = 1;
+	data->need_redraw = 2;
 }
 
 int	ft_repeat_key_events(t_data *data)
@@ -69,6 +71,5 @@ int	ft_repeat_key_events(t_data *data)
 	if (data->input.keys[KEY_CHANGE_COLOR])
 		ft_change_color(data);
 	ft_update_image(data);
-	usleep(20000);
 	return (0);
 }

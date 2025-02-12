@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:06:08 by julien            #+#    #+#             */
-/*   Updated: 2025/02/11 15:41:17 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:33:36 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ unsigned int	ft_get_color_for_pixel(t_data *data, t_pixel *pixel)
 		return (data->render.opposite_color);
 	else
 	{
-		gradient.value = pixel->z ;
+		gradient.value = pixel->z;
 		gradient.min_value = min_z;
 		gradient.max_value = max_z;
 		gradient.lower_color = data->render.color;
 		gradient.higher_color = data->render.opposite_color;
-		return (ft_get_gradient_color(data, gradient));
+		return (ft_get_gradient_color(gradient));
 	}
 }
 
@@ -39,6 +39,7 @@ void	ft_apply_scale_to_pixel(t_pixel *pixel, int scale)
 {
 	pixel->x = pixel->x * scale;
 	pixel->y = pixel->y * scale;
+	pixel->z = pixel->z * scale;
 }
 
 void	ft_apply_offset_to_pixel(t_pixel *pixel, t_render render)
@@ -47,7 +48,7 @@ void	ft_apply_offset_to_pixel(t_pixel *pixel, t_render render)
 	pixel->y += render.offset_y;
 }
 
-void	ft_apply_scale_z_to_pixel(t_pixel *pixel, int z, int scale_z)
+void	ft_apply_scale_z_to_pixel(t_pixel *pixel, int scale_z)
 {
-	pixel->y = pixel->y - z * scale_z;
+	pixel->z *= scale_z;
 }

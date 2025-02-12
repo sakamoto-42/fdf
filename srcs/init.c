@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:22 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/11 20:49:23 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:30:46 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@ void	ft_get_screen_size(void *mlx_ptr, int *size_x, int *size_y)
 	mlx_get_screen_size(mlx_ptr, size_x, size_y);
 }
 
+void	ft_set_scale(t_data *data)
+{
+	int	max_dimension;
+
+	if (data->map.cols > data->map.rows)
+		max_dimension = data->map.cols;
+	else
+		max_dimension = data->map.rows;
+	if ((data->window.size_x / max_dimension)
+		< ((data->window.size_y / max_dimension) / 2.5))
+		data->render.scale = data->window.size_x / max_dimension;
+	else
+		data->render.scale = (data->window.size_y / max_dimension) / 2.5;
+}
+
 void	ft_init_default_settings(t_data *data)
 {
 	ft_get_screen_size(data->mlx_ptr,
@@ -26,7 +41,7 @@ void	ft_init_default_settings(t_data *data)
 	data->need_redraw = 0;
 	data->window.title = "fdf";
 	data->render.projection = ISOMETRIC_PROJECTION;
-	data->render.scale = 20;
+	ft_set_scale(data);
 	data->render.color = data->colors[0];
 	data->render.opposite_color = data->opposite_colors[0];
 	data->render.render_isometric.angle_x = 45 * (M_PI / 180);

@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:10:42 by julien            #+#    #+#             */
-/*   Updated: 2025/02/10 10:48:40 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:37:30 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_init_left_panel_2_conic(t_data *data, t_panel_hud *left_panel_2_conic)
 	ft_set_panel_texts_offset_y(left_panel_2_conic,
 		(data->header_panel.texts_count + 1) * HUD_TEXT_HEIGHT);
 	ft_set_left_panel_2_display_conic(data, left_panel_2_conic);
-	ft_set_left_panel_2_texts_conic(data, left_panel_2_conic);
+	ft_set_left_panel_2_texts_conic(left_panel_2_conic);
 	return (1);
 }
 
@@ -33,11 +33,10 @@ void	ft_set_left_panel_2_display_conic(t_data *data,
 	left_panel_2_conic->offset_x = 200;
 	left_panel_2_conic->offset_y = (data->header_panel.texts_count + 1)
 		* HUD_TEXT_HEIGHT;
-	left_panel_2_conic->color = ft_rgb_to_color(data, 255, 0, 0);
+	left_panel_2_conic->color = ft_rgb_to_color(255, 0, 0);
 }
 
-void	ft_set_left_panel_2_texts_conic(t_data *data,
-	t_panel_hud *left_panel_2_conic)
+void	ft_set_left_panel_2_texts_conic(t_panel_hud *left_panel_2_conic)
 {
 	left_panel_2_conic->texts[0].text = "CONIC PROJECTION COMMANDS :";
 	left_panel_2_conic->texts[0].offset_x = left_panel_2_conic->offset_x
@@ -54,5 +53,5 @@ void	ft_set_left_panel_2_texts_conic(t_data *data,
 	ft_set_panel_texts_offset_x(left_panel_2_conic, left_panel_2_conic->offset_x
 		+ HUD_TEXT_OFFSET_X, 1);
 	ft_set_panel_texts_color(left_panel_2_conic,
-		ft_rgb_to_color(data, 255, 255, 255), 0);
+		ft_rgb_to_color(255, 255, 255), 0);
 }

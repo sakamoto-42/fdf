@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:30:33 by julien            #+#    #+#             */
-/*   Updated: 2025/02/10 16:07:06 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:09:53 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_handle_keys_translation(t_data *data)
 		data->render.offset_x -= TRANSLATION_STEP;
 	if (data->input.keys[KEY_MOVE_RIGHT])
 		data->render.offset_x += TRANSLATION_STEP;
-	data->need_redraw = 1;
+	data->need_redraw = 2;
 }
 
 void	ft_handle_keys_zoom(t_data *data)
@@ -31,7 +31,7 @@ void	ft_handle_keys_zoom(t_data *data)
 		data->render.scale = data->render.scale + ZOOM_STEP;
 	if (data->input.keys[KEY_ZOOM_OUT] || data->input.keys[KEY_ZOOM_OUT_2])
 		data->render.scale = data->render.scale - ZOOM_STEP;
-	data->need_redraw = 1;
+	data->need_redraw = 2;
 }
 
 void	ft_change_color(t_data *data)
@@ -43,5 +43,5 @@ void	ft_change_color(t_data *data)
 	data->render.color = data->colors[color_index];
 	data->render.opposite_color = data->opposite_colors[color_index];
 	color_index++;
-	data->need_redraw = 1;
+	data->need_redraw = 2;
 }

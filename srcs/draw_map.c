@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:36:48 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/11 16:33:53 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:33:39 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_draw_line(t_data *data, t_line line)
 			&& line.pixel_1.y == line.pixel_2.y))
 	{
 		ft_set_gradient_values(&gradient, step_count, steps, line);
-		color = ft_get_gradient_color(data, gradient);
+		color = ft_get_gradient_color(gradient);
 		ft_mlx_pixel_put(data, line.pixel_1, color, MAP);
 		step_count++;
 		bres.e2 = bres.err * 2;

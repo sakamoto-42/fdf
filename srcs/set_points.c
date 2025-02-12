@@ -6,7 +6,7 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:51:53 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/11 20:01:50 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:39:23 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_set_points_datas(t_data *data, char **cols,
 {
 	data->pixels[row_count][*col_count].x = *col_count;
 	data->pixels[row_count][*col_count].y = row_count;
-	data->pixels[row_count][*col_count].z = ft_atoi(cols[*col_count]);
+	data->pixels[row_count][*col_count].z = ft_atoi(cols[*col_count]) / 5;
 	(*col_count)++;
 }
 

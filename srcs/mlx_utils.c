@@ -6,16 +6,15 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:58:17 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/10 13:44:30 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:31:10 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_rgb_to_color(t_data *data, int r, int g, int b)
+int	ft_rgb_to_color(int r, int g, int b)
 {
-	return ((unsigned int)(mlx_get_color_value(data->mlx_ptr,
-			(r << 16) | (g << 8) | b)));
+	return ((r << 16) | (g << 8) | b);
 }
 
 void	ft_mlx_pixel_put(t_data *data,

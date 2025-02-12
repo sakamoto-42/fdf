@@ -6,13 +6,13 @@
 /*   By: juduchar <juduchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 16:51:36 by juduchar          #+#    #+#             */
-/*   Updated: 2025/02/08 22:25:22 by juduchar         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:34:11 by juduchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-unsigned int	ft_get_opposite_color(t_data *data, unsigned int color)
+unsigned int	ft_get_opposite_color(unsigned int color)
 {
 	int	r;
 	int	g;
@@ -21,7 +21,7 @@ unsigned int	ft_get_opposite_color(t_data *data, unsigned int color)
 	r = 255 - ((color >> 16) & 0xFF);
 	g = 255 - ((color >> 8) & 0xFF);
 	b = 255 - (color & 0xFF);
-	return (ft_rgb_to_color(data, r, g, b));
+	return (ft_rgb_to_color(r, g, b));
 }
 
 int	ft_init_color_sets(t_data *data)
@@ -32,15 +32,15 @@ int	ft_init_color_sets(t_data *data)
 	data->colors = (unsigned int *)ft_calloc(nb_color_sets, sizeof(int));
 	if (!data->colors)
 		return (0);
-	data->colors[0] = ft_rgb_to_color(data, 0, 255, 0);
-	data->colors[1] = ft_rgb_to_color(data, 255, 87, 51);
-	data->colors[2] = ft_rgb_to_color(data, 51, 255, 87);
-	data->colors[3] = ft_rgb_to_color(data, 51, 87, 255);
-	data->colors[4] = ft_rgb_to_color(data, 255, 215, 0);
-	data->colors[5] = ft_rgb_to_color(data, 255, 51, 161);
-	data->colors[6] = ft_rgb_to_color(data, 0, 255, 255);
-	data->colors[7] = ft_rgb_to_color(data, 255, 165, 0);
-	data->colors[8] = ft_rgb_to_color(data, 128, 0, 128);
+	data->colors[0] = ft_rgb_to_color(0, 255, 0);
+	data->colors[1] = ft_rgb_to_color(255, 87, 51);
+	data->colors[2] = ft_rgb_to_color(51, 255, 87);
+	data->colors[3] = ft_rgb_to_color(51, 87, 255);
+	data->colors[4] = ft_rgb_to_color(255, 215, 0);
+	data->colors[5] = ft_rgb_to_color(255, 51, 161);
+	data->colors[6] = ft_rgb_to_color(0, 255, 255);
+	data->colors[7] = ft_rgb_to_color(255, 165, 0);
+	data->colors[8] = ft_rgb_to_color(128, 0, 128);
 	if (!ft_init_opposite_color_sets(data, data->colors, nb_color_sets))
 	{
 		free(data->colors);
@@ -61,7 +61,7 @@ int	ft_init_opposite_color_sets(t_data *data,
 	i = 0;
 	while (i < nb_color_sets)
 	{
-		data->opposite_colors[i] = ft_get_opposite_color(data, colors[i]);
+		data->opposite_colors[i] = ft_get_opposite_color(colors[i]);
 		i++;
 	}
 	return (1);
